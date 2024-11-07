@@ -1,0 +1,31 @@
+{
+  "name": "goalbridge",
+  "version": "1.0.0",
+  "description": "Job finder web platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenC2/GoalBridge.git"
+  },
+  "author": "RubénC, GiancarloC, SergioO, HansO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RubenC2/GoalBridge/issues"
+  },
+  "homepage": "https://github.com/RubenC2/GoalBridge#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.1",
+    "pug": "^3.0.3"
+  }
+}
