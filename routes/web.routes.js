@@ -10,7 +10,7 @@ const router = express.Router();
 // [GET] /login Ingresar
 
 router.get('/', webController.goHomePage); // Las rutaS "/" y las rutaS "/profile", deben repetirse?¿
-// router.get('/register', notLoggedController.getNotLoggedRegister);
+router.get('/user2', webController.getUsers);// router.get('/register', notLoggedController.getNotLoggedRegister);
 // router.get('/login', notLoggedController.getNotLoggedLogi);
 
 module.exports = router;

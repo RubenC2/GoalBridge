@@ -1,6 +1,6 @@
 const express = require('express');
 // Rutas 
-const notLoggedController = require("../controllers/api.controller");
+const apiController = require("../controllers/api.controller");
 const router = express.Router();
 
 // Endpoints notLogged
@@ -10,12 +10,12 @@ const router = express.Router();
 // [GET] /profile Vista de los datos del perfil
 // [POST] /logout Salir (redirige a /)
 
-//router.get('/', loggedController.goHomePage);
+router.get('/api', apiController.goHomePage);
 //router.get('/favorites', notLoggedController.getNotLoggedRegister);
 //router.get('/profile', notLoggedController.getNotLoggedLogi);
 //router.post('/logout', notLoggedController.getNotLoggedLogi);
 
-module.exports = router;
+
 
 // [POST] /api/user Registrarse en la aplicación
 // [PUT] /api/user Editar datos del perfil del usuario o administrador
@@ -30,3 +30,5 @@ module.exports = router;
 // [DELETE] /api/favorites Borrar favorito del usuario
 // [GET] /recoverpassword Recuperar password
 // [GET] /restorepassword Cambiar password
+
+module.exports = router;
