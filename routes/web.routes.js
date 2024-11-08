@@ -1,6 +1,6 @@
 const express = require('express');
 // Rutas 
-const notLoggedController = require("../controllers/notLogged.controller");
+const webController = require("../controllers/web.controller");
 const router = express.Router();
 
 // Endpoints notLogged
@@ -9,7 +9,7 @@ const router = express.Router();
 // [GET] /register Registrarse
 // [GET] /login Ingresar
 
-router.get('/', notLoggedController.goHomePage); // Las rutaS "/" y las rutaS "/profile", deben repetirse?¿
+router.get('/', webController.goHomePage); // Las rutaS "/" y las rutaS "/profile", deben repetirse?¿
 // router.get('/register', notLoggedController.getNotLoggedRegister);
 // router.get('/login', notLoggedController.getNotLoggedLogi);
 
