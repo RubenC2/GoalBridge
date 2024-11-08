@@ -2,11 +2,14 @@ const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
 const port = 3000; // Puerto a usar por el servidor
 
-app.use(express.json()); // Middleware para parsear el body de las peticiones
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Middlewares
+app.use(express.json());        // Middleware para parsear el body de las peticiones
 
 
 // Rutas
-
 const webRoutes = require("./routes/web.routes") // Importa rutas
 const apiRoutes = require("./routes/api.routes")
 
