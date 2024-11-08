@@ -7,17 +7,16 @@ app.use(express.json()); // Middleware para parsear el body de las peticiones
 
 // Rutas
 
-const notLoggedRoutes = require("./routes/notLogged.routes") // Importa rutas
-// const loggedRoutes = require("./routes/logged.routes")
-// const adminRoutes = require("./routes/admin.routes")
+const webRoutes = require("./routes/web.routes") // Importa rutas
+const apiRoutes = require("./routes/api.routes")
+
+// HABILITACION DE RUTAS
+
+app.use('/', webRoutes); 
+app.use('/api',apiRoutes);
 
 
-// Habilitacion de rutas
-app.use('/api/',notLoggedRoutes); 
-// app.use('/api/user',loggedRoutes);
-// app.use('/api/ads',adminRoutes);
-
-// Para ruta no existente
+//middleware for 404
 //app.use("*", manage404);
 
 app.listen(port, () => {
