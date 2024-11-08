@@ -1,13 +1,7 @@
-const { Pool } = require('pg');
+const pool = require('../config/db_pgsql'); // conexion a base de datos
 const UserQueries = require('../queries/user.queries') // Queries SQL
+require('dotenv').config();
 
-const pool = new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    port: '5432',
-    database: 'postgres',
-    password: '123456'
-});
 
 const getAllUsers = async () => {
     let client, result;
@@ -24,8 +18,11 @@ const getAllUsers = async () => {
     return result
 }
 
-const entries = {
+
+
+const functions = {
     getAllUsers,
+
 }
 
-module.exports = entries;
+module.exports = functions;

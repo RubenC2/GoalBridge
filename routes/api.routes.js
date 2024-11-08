@@ -3,14 +3,16 @@ const express = require('express');
 const apiController = require("../controllers/api.controller");
 const router = express.Router();
 
-// Endpoints notLogged
+// ------------------------------------------------------------
+// Rutas funcionando
 
-// [GET] / Inicio
-// [GET] /favorites Vista de favoritos
-// [GET] /profile Vista de los datos del perfil
-// [POST] /logout Salir (redirige a /)
+router.get('/', apiController.goHomePage);
+router.post('/user', apiController.createUser);
 
-router.get('/api', apiController.goHomePage);
+
+// ----------------------------------------------------------
+// Rutas por hacer
+
 //router.get('/favorites', notLoggedController.getNotLoggedRegister);
 //router.get('/profile', notLoggedController.getNotLoggedLogi);
 //router.post('/logout', notLoggedController.getNotLoggedLogi);

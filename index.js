@@ -10,8 +10,6 @@ app.use(express.json()); // Middleware para parsear el body de las peticiones
 const webRoutes = require("./routes/web.routes") // Importa rutas
 const apiRoutes = require("./routes/api.routes")
 
-
-
 // HABILITACION DE RUTAS
 
 app.use('/', webRoutes); 

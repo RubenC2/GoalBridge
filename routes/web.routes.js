@@ -3,14 +3,15 @@ const express = require('express');
 const webController = require("../controllers/web.controller");
 const router = express.Router();
 
-// Endpoints notLogged
+// -------------------------
+// Rutas funcionando
 
-// [GET] / Inicio
-// [GET] /register Registrarse
-// [GET] /login Ingresar
+router.get('/', webController.goHomePage); // Vista de inicio de la app
+router.get('/users', webController.getUsers); // Vista del administrador con el listado de usuario registrados (admin)
 
-router.get('/', webController.goHomePage); // Las rutaS "/" y las rutaS "/profile", deben repetirse?¿
-router.get('/user2', webController.getUsers);// router.get('/register', notLoggedController.getNotLoggedRegister);
-// router.get('/login', notLoggedController.getNotLoggedLogi);
+// --------------------------------------------
+// Rutas por hacer
+
+//router.get('/login', webController.goLoginPage); // Vista de ingreso de usuario ya registrado
 
 module.exports = router;
