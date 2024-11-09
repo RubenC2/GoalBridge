@@ -1,7 +1,7 @@
 // Funcion goHome
 
 const goHomePage = async (req, res) => {
-    res.render('home.pug')
+    res.render('loginForm.pug')
 };
 
 module.exports = {

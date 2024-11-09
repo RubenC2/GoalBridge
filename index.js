@@ -13,7 +13,7 @@ const notLoggedRoutes = require("./routes/notLogged.routes") // Importa rutas
 
 
 // Habilitacion de rutas
-app.use('/api/',notLoggedRoutes); 
+app.use('/',notLoggedRoutes); 
 // app.use('/api/user',loggedRoutes);
 // app.use('/api/ads',adminRoutes);
 
