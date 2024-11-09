@@ -1,19 +1,14 @@
-doctype html
-html
-  head
-    title Login
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet" href="styles.css")
-  body
+extends layout 
+
+block content
     .login-container
       h1 Iniciar Sesión
       form(action="/login" method="POST")
         .form-group
-          label(for="username") Nombre de Usuario
-          input#username(type="text" name="username" placeholder="Ingresa tu usuario" required)
+          label(for="username") Nombre de Usuario:
+          input#username(type="text" name="username" placeholder="Usuario" required)
         .form-group
-          label(for="password") Contraseña
-          input#password(type="password" name="password" placeholder="Ingresa tu contraseña" required)
+          label(for="password") Contraseña:
+          input#password(type="password" name="password" placeholder="Contraseña" required)
         .form-group
           button(type="submit") Iniciar Sesión

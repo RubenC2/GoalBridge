@@ -1,0 +1,126 @@
+li {
+    list-style-type: none; 
+}
+
+/* Estilo para el enlace de Cerrar sesión */
+a.logout {
+    color: black;  /* Color rojo */
+    /*text-decoration: none;   Eliminar subrayado */
+    padding: 10px 15px;  /* Añadir espacio alrededor del texto */
+    border-radius: 5px;  /* Bordes redondeados */
+    background-color: #eee;  /* Fondo gris claro */
+    transition: background-color 0.3s, color 0.3s;  /* Efecto de transición al pasar el ratón */
+  }
+  
+  a.logout:hover {
+    color: #fff;  /* Cambiar color del texto a blanco */
+    background-color: #c00;  /* Cambiar fondo a rojo oscuro */
+  }
+
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo general del body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Contenedor principal del login */
+  .login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Estilo para el título */
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilo para los grupos de formulario */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Etiquetas del formulario */
+  label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Estilo de los campos de entrada */
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #0066cc;
+    outline: none;
+  }
+  
+  /* Estilo del botón de submit */
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #004c99;
+  }
+  
+  /* Estilo para el tamaño y disposición del formulario en dispositivos pequeños */
+  @media (max-width: 480px) {
+    .login-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    input[type="text"], input[type="password"] {
+      font-size: 16px;
+    }
+  
+    button[type="submit"] {
+      font-size: 18px;
+    }
+  }
+  
