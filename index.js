@@ -2,7 +2,9 @@ const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
 const port = 3000; // Puerto a usar por el servidor
 
+
 app.use(express.json()); // Middleware para parsear el body de las peticiones
+app.use(express.static('public'));
 
 
 // Rutas
@@ -13,7 +15,7 @@ const notLoggedRoutes = require("./routes/notLogged.routes") // Importa rutas
 
 
 // Habilitacion de rutas
-app.use('/api/',notLoggedRoutes); 
+app.use('/',notLoggedRoutes); 
 // app.use('/api/user',loggedRoutes);
 // app.use('/api/ads',adminRoutes);
 
