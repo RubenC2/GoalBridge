@@ -30,6 +30,7 @@ app.use('/register', authRoutes);
 
 
 //middleware for 404
+
 //app.use("*", manage404);
 
 app.listen(port, () => {
