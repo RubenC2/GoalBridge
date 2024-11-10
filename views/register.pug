@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Registro
+  form(action="/register" method="POST")
+    label(for="username") Nombre de usuario:
+    input(type="text" name="username" required)
+    label(for="email") Correo electrónico:
+    input(type="email" name="email" required)
+    label(for="password") Contraseña:
+    input(type="password" name="password" required)
+    button(type="submit") Registrar
