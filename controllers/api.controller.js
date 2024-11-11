@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
     }
 
     const newUser = { username, password, email, role };
-    const response = await users.createNewUser(newUser);
+    const response = await users.createUser(newUser);
 
     res.status(201).json({
         "items_created": response,

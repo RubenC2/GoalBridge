@@ -1,6 +1,16 @@
-const { createUser, findUserByUsername } = require('../models/userModel');
+const { createUser, findUserByUsername } = require('../models/api.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+
+async function register(req, res) {
+    const { username, password, email, role = 'user' } = req.body;
+    try {
+        const newUser = await createUser(username, password, email, role);
+        res.redirect('/login');
+    } catch (error) {
+        res.status(500).send('Error en el registro');
+    }
+}
 
 async function login(req, res) {
     const { username, password } = req.body;
@@ -16,6 +26,11 @@ async function login(req, res) {
     } catch (error) {
         res.status(500).send('Error en el inicio de sesión');
     }
+}
+
+function logout(req, res) {
+    res.clearCookie('token');
+    res.redirect('/login');
 }
 
 module.exports = { register, login, logout };
