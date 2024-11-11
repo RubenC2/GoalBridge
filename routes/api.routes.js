@@ -1,6 +1,6 @@
 const express = require('express');
 
-const apiController = require("../controllers/api.controller");
+const userController = require("../controllers/user.controller");
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware');
 const authorizeRole = require('../middlewares/roleMiddleware');
@@ -55,8 +55,8 @@ const authorizeRole = require('../middlewares/roleMiddleware');
 
 // ------------------------------------------------------------
 // Rutas funcionando
-
-router.post('/user', apiController.createUser);
+router.get('/user', userController.getUsers);
+router.post('/user', userController.createUser);
 // router.put('/user', apiController.createUser);
 // router.delete('/user', apiController.createUser);
 

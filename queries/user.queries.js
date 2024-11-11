@@ -1,7 +1,7 @@
 const UserQueries = {
     getUsers: `
-    SELECT username, password, email, role
-    FROM user2;
+    SELECT nombre, apellidos, email, password, rol
+    FROM users;
     `
 }
 module.exports = UserQueries;
