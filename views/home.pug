@@ -9,7 +9,9 @@ html
     .container
       fieldset
         form(action="/film", method="post")
-          input(name="film", type="text", class="ghost-input", placeholder="Título de la Película", required)
+          input(name="username", type="text", class="ghost-input", placeholder="Nombre de Usuario", required)
+          input(name="password", type="text", class="ghost-input", placeholder="Contraseña", required)
+          input(name="email", type="text", class="ghost-input", placeholder="Correo electrónico", required)
           input(type="submit", class="ghost-button", value="Get Film")
 
 //- Esta plantlla tiene un formulario que recoge el titulo de la pelicula en el campo name="---" y lo envia con (action="/film", method="post")
