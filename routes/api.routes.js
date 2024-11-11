@@ -2,9 +2,10 @@ const express = require('express');
 
 const apiController = require("../controllers/api.controller");
 const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
+const authorizeRole = require('../middlewares/roleMiddleware');
 // const { usersRegister, login, logout } = require('../controllers/authController');
-// const authMiddleware = require('../middlewares/authMiddleware');
-// const authorizeRole = require('../middlewares/roleMiddleware');
+
 // Rutas terminadas
 
 // ---------------------------------------------------------------------------------------------
@@ -55,8 +56,11 @@ const router = express.Router();
 // ------------------------------------------------------------
 // Rutas funcionando
 
-router.get('/', apiController.goHomePage);
 router.post('/user', apiController.createUser);
+// router.put('/user', apiController.createUser);
+// router.delete('/user', apiController.createUser);
+
+
 
 
 // ----------------------------------------------------------

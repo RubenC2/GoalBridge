@@ -1,6 +1,7 @@
 
 CREATE DATABASE auth_db;
 
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -16,3 +17,4 @@ CREATE TABLE user_favs (
     FOREIGN KEY (userID) REFERENCES Users(id),
     FOREIGN KEY (favID) REFERENCES Favoritos(id)
 );
+

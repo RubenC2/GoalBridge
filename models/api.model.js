@@ -6,10 +6,14 @@ require('dotenv').config();
 async function createUser(username, password, email, role = 'user') {
     const hashedPassword = await bcrypt.hash(password, 10);
     const values = [username, hashedPassword, email, role];
-    
     const result = await pool.query(apiQueries.createNewUser, values);
     return result.rows[0];
+
+
+const functions = {
+    createUser,
 }
+
 
 async function findUserByUsername(username) {
     const values = [username];

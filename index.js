@@ -12,6 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const port = 3000; // Puerto a usar por el servidor
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Middlewares
 
 
 dotenv.config();
