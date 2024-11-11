@@ -7,14 +7,8 @@ html(lang="es")
     title Perfil de Usuario - GoalBridge
     link(rel="stylesheet", href="/css/style.css")
   body
-    header
-      nav
-        ul
-          li: a(href="/") Home
-          li: a(href="/favorites") Favoritos
-          li: a(href="/profile") Perfil
-          li: a(href="/settings") Ajustes
-          
+    include header
+      nav 
     main
       section.profile-container
         h1 Perfil de Usuario
