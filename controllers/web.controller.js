@@ -2,9 +2,9 @@ const users = require('../models/web.model'); // Importar el modelo de la BBDD
 
 // Funcion goHome
 
-const goHomePage = async (req, res) => {
-    res.render('home.pug')
-};
+// const goHomePage = async (req, res) => {
+//     res.render('home.pug')
+// };
 
 
 const getUsers = async (req, res) => { 
@@ -18,7 +18,6 @@ const getUsers = async (req, res) => {
 }
 
 module.exports = {
-    goHomePage,
     getUsers
 };
 

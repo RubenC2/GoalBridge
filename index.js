@@ -1,8 +1,15 @@
 const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
 const port = 3000; // Puerto a usar por el servidor
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Middlewares
 
 app.use(express.json()); // Middleware para parsear el body de las peticiones
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 // Rutas
