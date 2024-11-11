@@ -1,0 +1,20 @@
+// Incluye el encabezado (header) y el pie de página (footer)
+include header
+
+
+// Contenido principal de la página admin
+block content
+  .container
+    h1 Administrador - Panel de controls
+    // Muestra los datos del administrador logueado
+    .admin-info
+      p Nombre: #{admin.nombre}b¡
+      p Correo electrónico: #{admin.email}
+    
+    // Botones para redirigir a otras secciones
+    .buttons
+      a(href="/dashboard", class="btn btn-primary") Dashboard
+      a(href="/users", class="btn btn-secondary") Users
+      
+include footer
+

@@ -1,18 +1,26 @@
 doctype html
 html
   head
-    meta(charset="utf-8")
-    title Test
-    link(rel="stylesheet", type="text/css", href="/css/style.css")
-    link(href="https://fonts.googleapis.com/css?family=Open+Sans:300", rel="stylesheet", type="text/css")
+    title GoalBridge - Bienvenido
+    link(rel="stylesheet" href="/css/style.css")
+    //link(href="https://fonts.googleapis.com/css?family=Open+Sans:300", rel="stylesheet", type="text/css")
+   
+  include header
+  
   body
+    //- Contenedor principal
     .container
-      fieldset
-        form(action="/film", method="post")
-          input(name="username", type="text", class="ghost-input", placeholder="Nombre de Usuario", required)
-          input(name="password", type="text", class="ghost-input", placeholder="Contraseña", required)
-          input(name="email", type="text", class="ghost-input", placeholder="Correo electrónico", required)
-          input(type="submit", class="ghost-button", value="Get Film")
 
-//- Esta plantlla tiene un formulario que recoge el titulo de la pelicula en el campo name="---" y lo envia con (action="/film", method="post")
-//- que hace un post en la ruta /film.
+      //- Encabezado con el nombre de la aplicación
+      header
+        h1 Bienvenido a GoalBridge
+        p Tu portal gratuito para encontrar las mejores ofertas de trabajo en España
+        p GoalBridge te ayuda a conectar con oportunidades que se adaptan a tus habilidades y preferencias
+
+      //- Botones de autenticación
+      .auth-buttons
+        a.button(href="/login") Iniciar Sesión
+        a.button(href="/register") Regístrate
+
+    //- Pie de página
+    include footer
