@@ -28,11 +28,12 @@ const apiRoutes = require("./routes/api.routes")
 
 app.use('/', webRoutes); 
 app.use('/api',apiRoutes);
+app.use('/adminProfile', webRoutes); 
 
 
 
 // Habilitacion de rutas
-app.use('/',notLoggedRoutes); 
+//app.use('/',notLoggedRoutes); 
 // app.use('/api/user',loggedRoutes);
 // app.use('/api/ads',adminRoutes);
 
