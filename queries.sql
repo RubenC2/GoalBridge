@@ -4,11 +4,11 @@ CREATE DATABASE auth_db;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    nonmbre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role VARCHAR(10) DEFAULT 'user' CHECK (role IN ('admin', 'user'))
+    rol VARCHAR(10) DEFAULT 'user' CHECK (role IN ('admin', 'user'))
 );
 
 CREATE TABLE favoritos (
@@ -29,3 +29,9 @@ CREATE TABLE user_favs (
     FOREIGN KEY (favID) REFERENCES favoritos(id)
 );
 
+INSERT INTO favoritos (puesto, empresa, salario, descripcion, modalidad, requisitos) VALUES
+    ('Developer Full Stack', 'The Bridge', '20k-30k', 'Puesto para developer junior full stack', '100% remoto', 'Titulación relacionada y experiencia demostrable')
+
+INSERT INTO users (nombre, apellidos, email, password, rol) VALUES 
+  ('Juan',  'González', 'juanexample@gmail.com', '123456', 'admin'),
+  ('Ana', 'Tellez', 'anaexample@gmail.com', '123456', 'user')
