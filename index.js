@@ -25,8 +25,20 @@ const authRoutes = require('./routes/auth.routes');
 // HABILITACION DE RUTAS
 
 app.use('/', webRoutes); 
-app.use('/api', apiRoutes);
+
+app.use('/api',apiRoutes);
+app.use('/adminProfile', webRoutes); 
+
+
+
+// Habilitacion de rutas
+//app.use('/',notLoggedRoutes); 
+// app.use('/api/user',loggedRoutes);
+// app.use('/api/ads',adminRoutes);
+
+
 app.use('/register', authRoutes);
+
 
 
 //middleware for 404
