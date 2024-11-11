@@ -1,0 +1,23 @@
+//- profile.pug
+doctype html
+html
+   head
+    title GoalBridge - Bienvenido
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    include header
+      
+    main
+      section.user-data
+        h2 Información del Usuario
+        //- Aquí puedes añadir los datos de usuario con plantillas dinámicas
+        p Nombre: #[span#nombre]
+        p Correo: #[span#correo]
+        p Edad: #[span#edad]
+        //- Agrega más datos según necesites
+
+      //- Botón que redirige a Favoritos
+      a.button(href="/favoritos") Ir a Favoritos
+
+    //- Pie de página opcional
+    include footer
