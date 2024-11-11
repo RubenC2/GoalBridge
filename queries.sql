@@ -6,3 +6,10 @@ CREATE TABLE user2 (
     role VARCHAR(50) DEFAULT 'user'
 );
 
+CREATE TABLE user_favs (
+    userID INT,
+    favID INT,
+    PRIMARY KEY (userID, favID),
+    FOREIGN KEY (userID) REFERENCES Users(id),
+    FOREIGN KEY (favID) REFERENCES Favoritos(id)
+);
