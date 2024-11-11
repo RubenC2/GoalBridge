@@ -1,0 +1,15 @@
+include header 
+extends layout 
+
+block content
+    .login-container
+      h1 Iniciar Sesión
+      form(action="/login" method="POST")
+        .form-group
+          label(for="username") Nombre de Usuario:
+          input#username(type="text" name="username" placeholder="Usuario" required)
+        .form-group
+          label(for="password") Contraseña:
+          input#password(type="password" name="password" placeholder="Contraseña" required)
+        .form-group
+          button(type="submit") Iniciar Sesión
