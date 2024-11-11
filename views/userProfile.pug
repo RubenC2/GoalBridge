@@ -1,23 +1,65 @@
-//- profile.pug
 doctype html
 html
-   head
+  head
     title GoalBridge - Bienvenido
     link(rel="stylesheet" href="/css/style.css")
-  body
+  body(class="profile-background")
     include header
-      
-    main
-      section.user-data
-        h2 Información del Usuario
-        //- Aquí puedes añadir los datos de usuario con plantillas dinámicas
-        p Nombre: #[span#nombre]
-        p Correo: #[span#correo]
-        p Edad: #[span#edad]
-        //- Agrega más datos según necesites
 
-      //- Botón que redirige a Favoritos
-      a.button(href="/favoritos") Ir a Favoritos
+    main(class="profile-background")
+      .container
+        .left-section
+          section.job-search
+            h3 Buscar ofertas de trabajo
+            form(action="/buscar-ofertas" method="GET")
+              input(type="text" name="query" placeholder="Buscar empleo..." required)
+              button(type="submit") Buscar
 
-    //- Pie de página opcional
+        .center-section
+          section.favorites
+            h3 Tus Favoritos
+            .favorite-item
+              p Nombre: #[span#nombre]
+              p Correo: #[span#correo]
+              button.remove-button
+                i(class="fa fa-trash") Eliminar
+              // Aquí puedes agregar más elementos de favoritos
+
+        .right-section
+          section.recent-posts
+            h3 Publicaciones más recientes
+            .post-item
+              p Publicación 1
+              p Breve descripción de la publicación
+            .post-item
+              p Publicación 2
+              p Breve descripción de la publicación
+            // Aquí puedes agregar más publicaciones recientes
+
     include footer
+
+
+//- doctype html
+//- html
+//-   head
+//-     title GoalBridge - Bienvenido
+//-     link(rel="stylesheet" href="/css/style.css")
+//-   body(class="profile-background")
+//-     include header
+    
+//-     main(class="profile-background")
+//-       section.user-data
+//-         h2 Información del Usuario
+//-         p Nombre: #[span#nombre]
+//-         p Correo: #[span#correo]
+//-         p Edad: #[span#edad]
+
+//-       section.job-search
+//-         h3 Buscar ofertas de trabajo
+//-         form(action="/buscar-ofertas" method="GET")
+//-           input(type="text" name="query" placeholder="Buscar empleo..." required)
+//-           button(type="submit") Buscar
+
+//-       a.button(href="/favoritos") Ir a Favoritos
+
+//-     include footer

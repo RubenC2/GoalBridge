@@ -1,0 +1,38 @@
+//- dashboard.pug
+extends layout
+
+block content
+  .container
+    // Formulario para crear un nuevo anuncio
+    h2 Crear un nuevo anuncio
+    form(action="/admin/crear-anuncio", method="POST")
+      .form-group
+        label(for="titulo") Título
+        input(type="text", id="titulo", name="titulo", required)
+      .form-group
+        label(for="descripcion") Descripción
+        textarea(id="descripcion", name="descripcion", required)
+      .form-group
+        label(for="tipo") Tipo de anuncio
+        select(id="tipo", name="tipo", required)
+          option(value="empleo") Empleo
+          option(value="curso") Curso
+      .form-group
+        label(for="fecha") Fecha límite
+        input(type="date", id="fecha", name="fecha", required)
+      button(type="submit") Crear anuncio
+
+    // Lista de anuncios creados
+    //- h2 Anuncios existentes
+    //- .anuncios
+    //-   each anuncio in anuncios
+    //-     .card
+    //-       .card-header
+    //-         h3= anuncio.titulo
+    //-       .card-body
+    //-         p= anuncio.descripcion
+    //-         //p Tipo: #{anuncio.tipo}
+    //-         p Fecha límite: #{anuncio.fecha}
+    //-       .card-footer
+    //-         //a(href=`/admin/editar-anuncio/${anuncio.id}`) Editar
+    //-         //a(href=`/admin/borrar-anuncio/${anuncio.id}`, onclick="return confirm('¿Estás seguro de que quieres borrar este anuncio?')") Borrar

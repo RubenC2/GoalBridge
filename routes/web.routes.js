@@ -10,6 +10,7 @@ const authorizeRole = require('../middlewares/roleMiddleware');
 // Rutas funcionando
 
 router.get('/', (req, res) => res.render('home')); // Vista de inicio de la app
+router.get('/prueba', (req, res) => res.render('userProfile')); // Vista de inicio de la app
 
 router.get('/register', (req, res) => res.render('register')); //Vista de registro de usuario
 

@@ -1,26 +1,39 @@
+// profile.pug
+
 doctype html
-html
+html(lang="es")
   head
-    title GoalBridge - Bienvenido
-    link(rel="stylesheet" href="/css/style.css")
-    //link(href="https://fonts.googleapis.com/css?family=Open+Sans:300", rel="stylesheet", type="text/css")
-   
-  include header
-  
+    meta(charset="UTF-8")
+    title Perfil de Usuario - GoalBridge
+    link(rel="stylesheet", href="/css/style.css")
   body
-    //- Contenedor principal
-    .container
+    header
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/favorites") Favoritos
+          li: a(href="/profile") Perfil
+          li: a(href="/settings") Ajustes
+          
+    main
+      section.profile-container
+        h1 Perfil de Usuario
+        .user-info
+          p Nombre: Juan Pérez
+          p Correo electrónico: juan.perez@email.com
+          p Ubicación: Madrid, España
+          p Última actualización: 11 de noviembre de 2024
+          
+        .favorite-button
+          button(onclick="window.location.href='/favorites'") Ver mis favoritos
 
-      //- Encabezado con el nombre de la aplicación
-      header
-        h1 Bienvenido a GoalBridge
-        p Tu portal gratuito para encontrar las mejores ofertas de trabajo en España
-        p GoalBridge te ayuda a conectar con oportunidades que se adaptan a tus habilidades y preferencias
+        .recent-activities
+          h2 Actividades recientes
+          ul
+            li Última oferta guardada: "Desarrollador Web Junior" - 5 de noviembre de 2024
+            li Última oferta aplicada: "Desarrollador Frontend" - 3 de noviembre de 2024
+            li Última actualización de perfil: "Actualización de ubicación" - 11 de noviembre de 2024
 
-      //- Botones de autenticación
-      .auth-buttons
-        a.button(href="/login") Iniciar Sesión
-        a.button(href="/register") Regístrate
+    footer
+      p © 2024 GoalBridge, todos los derechos reservados.
 
-    //- Pie de página
-    include footer
