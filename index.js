@@ -1,32 +1,31 @@
 const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
 const port = 3000; // Puerto a usar por el servidor
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
 
 
-
-app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(express.static('public'));
-
-require('dotenv').config();
-
+dotenv.config();
 
 // Logger, formato de lo que sale por terminal
 app.use(express.json()); // Middleware para parsear el body de las peticiones
 app.use(express.static("public")); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
 app.use(express.urlencoded({ extended: true })); // para trabajar con los datos que llegan por el formulario
+app.use(cookieParser());
 
 //Configuración de vistas PUG - Motor de plantillas
 app.set('view engine', 'pug');
-app.set('views','./views');
+app.set('views','/views');
 
 // Rutas
 
 const webRoutes = require("./routes/web.routes") // Importa rutas
 const apiRoutes = require("./routes/api.routes")
-
+const authRoutes = require('./routes/auth.routes');
 // HABILITACION DE RUTAS
 
 app.use('/', webRoutes); 
+
 app.use('/api',apiRoutes);
 app.use('/adminProfile', webRoutes); 
 
@@ -37,7 +36,10 @@ app.use('/adminProfile', webRoutes);
 // app.use('/api/user',loggedRoutes);
 // app.use('/api/ads',adminRoutes);
 
-// Para ruta no existente
+
+app.use('/register', authRoutes);
+
+
 
 //middleware for 404
 
