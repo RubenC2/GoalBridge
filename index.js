@@ -34,7 +34,7 @@ app.use(express.json());
 
 const webRoutes = require("./routes/web.routes") // Importa rutas
 const apiRoutes = require("./routes/api.routes")
-const jobOfferRoutes = require("./routes/jobOffer.routes")
+const jobOfferRoutes = require("./routes/job.offer.routes")
 
 // HABILITACION DE RUTAS
 
