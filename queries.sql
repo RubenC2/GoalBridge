@@ -12,12 +12,17 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE user_favs (
-    userID INT,
-    favID INT,
-    PRIMARY KEY (userID, favID),
-    FOREIGN KEY (userID) REFERENCES users(id),
-    FOREIGN KEY (favID) REFERENCES favoritos(id)
+-- CREATE TABLE user_favs (
+--     userID INT,
+--     favID INT,
+--     FOREIGN KEY (userID) REFERENCES users(id),
+-- );
+
+CREATE TABLE favorites (
+    users_id INT NOT NULL,
+    offers_id VARCHAR(24) NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (users_id, offers_id)
 );
 
 
