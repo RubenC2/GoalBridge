@@ -3,12 +3,12 @@ const apiQueries = require('../queries/api.queries') // Queries SQL
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
-async function createUser(username, password, email, role = 'user') {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const values = [username, hashedPassword, email, role];
+async function createUser(nombre, apellidos, password, email, rol) {
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    const values = [nombre, apellidos, password, email, rol];
     
-    const result = await pool.query(apiQueries.createNewUser, values);
-    return result.rows[0];
+    // const result = await pool.query(apiQueries.createNewUser, values);
+    // return result.rows[0];
 }
 
 const functions = {
