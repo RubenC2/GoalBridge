@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 Mis Favoritos
+    each favorites in favorites
+        .favorite-card
+            h2= favorito.titulo
+            p Empresa: #{favorites.empresa}
+            p Ubicación: #{favorites.ubicacion}
+            p Descripción: #{favorites.descripcion}

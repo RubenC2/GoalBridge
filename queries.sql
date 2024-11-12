@@ -15,9 +15,7 @@ CREATE TABLE users (
 CREATE TABLE user_favs (
     userID INT,
     favID INT,
-    PRIMARY KEY (userID, favID),
-    FOREIGN KEY (userID) REFERENCES users(id),
-    FOREIGN KEY (favID) REFERENCES favoritos(id)
+    FOREIGN KEY (userID) REFERENCES users(id)
 );
 
 
