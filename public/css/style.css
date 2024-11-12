@@ -227,3 +227,124 @@ header h1 {
 .dashboard-submit:hover {
   background-color: #004bb5;
 }
+
+/* --------------------Busqueda de trabajo GET-------------- */
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Contenedor de búsqueda */
+.dashboard-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.dashboard-search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dashboard-search-input {
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.dashboard-search-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-search-button:hover {
+  background-color: #004bb5;
+}
+
+/* Contenedor de resultados */
+.dashboard-results-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-job-offers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-offer-item {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-offer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dashboard-offer-item p {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.dashboard-offer-item strong {
+  font-weight: bold;
+}
+
+.dashboard-offer-item p {
+  color: #555;
+}
+
+/* Estilos para el caso sin resultados */
+.dashboard-results-container p {
+  color: #c00;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  .dashboard-search-container {
+    padding: 10px;
+  }
+
+  .dashboard-search-form {
+    flex-direction: column;
+  }
+
+  .dashboard-search-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .dashboard-job-offers-list {
+    gap: 15px;
+  }
+}
