@@ -169,3 +169,61 @@ header h1 {
     margin-bottom: 1rem;
   }
 }
+/* -----------------------------DASHBOARD---------------------- */
+/* Estilos específicos para el dashboard */
+.dashboard-container {
+  max-width: 800px;
+  margin-top: 150px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.dashboard-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-form-group label {
+  display: block;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-form-group input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.dashboard-form-group input[type="text"]:focus {
+  border-color: #0073e6;
+  outline: none;
+}
+
+.dashboard-submit {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-submit:hover {
+  background-color: #004bb5;
+}
