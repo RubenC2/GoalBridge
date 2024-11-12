@@ -55,8 +55,8 @@ const authorizeRole = require('../middlewares/roleMiddleware');
 
 // ------------------------------------------------------------
 // Rutas funcionando
-router.get('/user', userController.getUsers);
-router.post('/user', userController.createUser);
+router.get('/user', userController.getEntries);
+router.post('/user', userController.createEntry);
 // router.put('/user', apiController.createUser);
 // router.delete('/user', apiController.createUser);
 
