@@ -1,5 +1,5 @@
 
-const users = require('../models/web.model'); // Importar el modelo de la BBDD
+// const users = require('../models/web.model'); // Importar el modelo de la BBDD
 
 // Funcion goHome
 

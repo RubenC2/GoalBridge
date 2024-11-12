@@ -1,92 +1,60 @@
-// const userModel = require('../models/users.model');  // Importación del modelo Product
+const userModel = require('../models/users.model');  // Importación del modelo Product
 const userService = require('../services/user.service');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const entry = require('../models/users.model'); // Importar el modelo de la BBDD
 
-//getEntries
-// if(hay email)
-//     busca por mail
-// else
-//     busca todo
-
-
-// GET http://localhost:3000/entries --> ALL
-const getEntriesWithoutID = async (req, res) => {   
-      let entries = await entry.getDataAuthorWithoutID(req.query);
-      res.status(200).json(entries); // [] con las entries encontradas
-    }
     
-// GET http://localhost:3000/entries?email=hola@gmail.com --> por email
-const getEntries = async (req, res) => {
-    let entries; 
+// GET http://localhost:3000/user?email=hola@gmail.com --> por email
+const getUsers = async (req, res) => {
+    let user; 
     if (req.query.email) {
-        entries = await entry.getEntriesByEmail(req.query.email);
+        user = await userModel.getUserByEmail(req.query.email);
     }
     else {
-        entries = await entry.getAllEntries();
+        user = await userModel.getAllUsers();
     }
-    res.status(200).json(entries); // [] con las entries encontradas
+    res.status(200).json(user); 
 }
 
-//createEntry
-// POST http://localhost:3000/api/entries
-// let newEntry = {
-//     title:"noticia desde Node",
-//     content:"va a triunfar esto2",
-//     email:"alejandru@thebridgeschool.es",
-//     category:"sucesos"}
 
-// Crear entry por email
-const createEntry = async (req, res) => {
-    const newEntry = req.body; // {title,content,email,category}
-    const response = await entry.createEntry(newEntry);
+// CREAR
+const createUser = async (req, res) => {
+    const newUser = req.body; // {nombre,apellidos,email,password}
+    const response = await userModel.createUser(newUser);
     res.status(201).json({
-        "items_created": response,
-        data: newEntry
+        "user_created": response,
+        data: newUser
     });
 }
-
-const updateEntry = async (req, res) => {
-    let entries; 
-    if (req.query.title) {
-        entries = await entry.updateEntry({message: `Se ha modificado la entry ${title}`}
+//ACTUALIZAR
+const updateUser = async (req, res) => {
+    let user; 
+    if (req.query.email) {
+        user = await userModel.updateUser({message: `Se ha modificado el usuario ${email}`}
         );
     }
     else {
-        entries = await entry.getAllEntries();
+        user = await userModel.getAllUsers();
     }
-    res.status(200).json(entries); // [] con las entries encontradas
+    res.status(200).json(user); 
 }
-
-const deleteEntry = async (req, res) => {
-    let entries; 
-    if (req.body.title) {
-        console.log(req.query.title)
-        entries = await entry.deleteEntry({message: `Se ha borrado la entry ${title}`});
+//BORRAR
+const deleteUser = async (req, res) => {
+    let user; 
+    if (req.body.email) {
+        console.log(req.query.email)
+        user = await userModel.deleteUser({message: `Se ha borrado el usuario ${email}`});
     }
     else {
-        entries = await entry.getAllEntries();
+        user = await userModel.getAllUsers();
     }
-    res.status(200).json(entries); // [] con las entries encontradas
+    res.status(200).json(user); 
 }
 
-//// Borrar
-// const deleteEntry = async (req, res) => {
-//     const title = req.body.title; // {title,content,email,category}
-//     const response = await entry.deleteEntry(title);
-//     res.status(201).json({
-//         "item_deleted": response,
-//         message: `Se ha borrado la entry: ${title}`,
-//         data: response
-//     });
-// }
-
 module.exports = {
-    getEntries,
-    createEntry,
-    getEntriesWithoutID,
-    deleteEntry,
-    updateEntry 
+    getUsers,
+    createUser,
+    deleteUser,
+    updateUser 
 }
