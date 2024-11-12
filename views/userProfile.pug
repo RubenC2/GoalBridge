@@ -11,8 +11,8 @@ html
         .left-section
           section.job-search
             h3 Buscar ofertas de trabajo
-            form(action="/buscar-ofertas" method="GET")
-              input(type="text" name="query" placeholder="Buscar empleo..." required)
+            form(id="search-form", method="GET")
+              input(type="text" name="query" id="search-input" placeholder="Buscar empleo..." required)
               button(type="submit") Buscar
 
         .center-section
@@ -28,13 +28,9 @@ html
         .right-section
           section.recent-posts
             h3 Publicaciones más recientes
-            .post-item
-              p Publicación 1
-              p Breve descripción de la publicación
-            .post-item
-              p Publicación 2
-              p Breve descripción de la publicación
-            // Aquí puedes agregar más publicaciones recientes
+            #offers-container
+              p Esperando resultados...
+              // Aquí se agregarán dinámicamente las ofertas de trabajo
 
     include footer
-
+script(src="/js/download.data.js")

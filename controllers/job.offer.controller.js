@@ -29,6 +29,28 @@ const getOffer = async (req, res) => {
     }
 };
 
+async function getAllOffers() {
+    try {
+      // Obtener todas las ofertas desde la base de datos
+      const allOffers = await offers.find();
+      console.log(allOffers)
+  
+      // Si no hay ofertas, devolver un mensaje adecuado
+      if (allOffers.length === 0) {
+        console.log('No se encontraron ofertas.');
+        return [];
+      }
+  
+      // Si se encuentran ofertas, devolverlas
+      return allOffers;
+    } catch (error) {
+      console.error('Error al obtener las ofertas:', error);
+      throw new Error('No se pudieron obtener las ofertas');
+    }
+  }
+  
+
+
 // UPDATE
 const editOffer = async (req, res) => {
     try {
@@ -63,6 +85,7 @@ const deleteOffer = async (req, res) => {
 module.exports = {
     createOffer,
     getOffer,
+    getAllOffers,
     editOffer,
     deleteOffer
 };
