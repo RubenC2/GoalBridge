@@ -1,0 +1,46 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    title Admin Dashboard - GoalBridge
+    link(rel="stylesheet", href="/css/style.css")
+  
+  body
+    block content
+      .dashboard-search-container
+        h2 Buscar Ofertas de Trabajo
+        form(action="/joboffers/buscar", method="GET", class="dashboard-search-form")
+          input(type="text", name="keyword", class="dashboard-search-input", placeholder="Buscar por palabra clave")
+          button(type="submit", class="dashboard-search-button") Buscar
+
+      .dashboard-results-container
+        if jobOffers && jobOffers.length > 0
+          h3 Resultados de búsqueda:
+          .dashboard-job-offers-list
+            each offer in jobOffers
+              .dashboard-offer-item
+                h4(class="dashboard-offer-title")= offer.puesto
+                p
+                  strong Empresa: 
+                  | #{offer.empresa}
+                p
+                  strong Salario: 
+                  | #{offer.salario}
+                p
+                  strong Descripción: 
+                  | #{offer.descripcion}
+                p
+                  strong Modalidad: 
+                  | #{offer.modalidad}
+                p
+                  strong Requisitos: 
+                  | #{offer.requisitos}
+                // Botón para agregar a favoritos
+                form(action="/favorites/agregar", method="POST")
+                  input(type="hidden", name="offerId", value=offer._id)
+                  button(type="submit", class="dashboard-add-favorites-button") Agregar a Favoritos
+        else
+          p No se encontraron ofertas para la búsqueda proporcionada.
+
+      // Botón para regresar
+      button(type="button", class="dashboard-back-button", onclick="window.history.back()") Volver a la búsqueda
