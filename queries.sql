@@ -30,3 +30,6 @@ CREATE TABLE favorites (
 INSERT INTO users (nombre, apellidos, email, password, rol) VALUES 
   ('Juan',  'González', 'juanexample@gmail.com', '123456', 'admin'),
   ('Ana', 'Tellez', 'anaexample@gmail.com', '123456', 'user')
+
+INSERT INTO favorites ("users_id", "offers_id")
+VALUES (1, '67323c870cfcb42ae67e8167');
