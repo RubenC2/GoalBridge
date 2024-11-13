@@ -1,16 +1,5 @@
-const { Pool } = require('pg');
 const queries = require('../queries/user.queries') // Queries SQL
-require('dotenv').config();
 const pool = require('../config/db_pgsql')
-
-
-// const pool = new Pool({
-//     user: "goalbridge_user", 
-//     host: "dpg-csp01ea3esus73cdo6bg-a.frankfurt-postgres.render.com", 
-//     database: "goalbridge", 
-//     password: "eqSnsxiCAJMxjcuFpi29biYYo2Kqw30q",
-//     // port: 5432, 
-//   })
 
 // GET
 const getUserByEmail = async (email) => {
@@ -49,6 +38,7 @@ const getAllUsers = async () => {
 
 
 
+
 // CREATE
 async function createUser(data) {
   try {
@@ -61,12 +51,6 @@ async function createUser(data) {
       return null; // Salir de la función si falta algún parámetro
     }
 
-    // Define la consulta SQL con placeholders ($1, $2, etc.)
-    const queryText = `
-      INSERT INTO users (nombre, apellidos, email, password) 
-      VALUES ($1, $2, $3, $4) 
-      RETURNING *;
-    `;
     
     // Ejecuta la consulta, pasando los parámetros como array
     const result = await pool.query(queryText, [nombre, apellidos, email, password]);
@@ -76,21 +60,9 @@ async function createUser(data) {
     
   } catch (err) {
     console.error("Error ejecutando createUser:", err);
-    throw err; // Lanza el error para que el manejador superior pueda actuar
+    throw err; // 
   }
 }
-
-// Ejemplo de uso de createEntry
-// const newEntry = {
-//   title: "Mi primer título",
-//   content: "Este es el contenido de mi entrada.",
-//   id_author: 1,        // ID de autor válido
-//   category: "Blog"     // Categoría de entrada
-// };
-
-// createEntry(newEntry)
-//   .then(entry => console.log("Entrada creada:", entry))
-//   .catch(err => console.error("Error al crear la entrada:", err));
 
 
 //UPDATE
