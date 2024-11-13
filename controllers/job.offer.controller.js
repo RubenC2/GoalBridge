@@ -16,16 +16,27 @@ const createOffer = async (req, res) => {
 };
 
 // READ
-const getOffer = async (req, res) => {
+const getOffers = async (req, res) => {
     try {
-        const id = req.params.id;
-        let ofertas = id
-            ? await jobOfferModel.findById(id, '-_id -__v').populate("provider", '-_id -__v')  // Si se especifica un ID, busca por ID
-            : await jobOfferModel.find({}, '-_id -__v').populate("provider", '-_id -__v');     // Si no, encuentra todos los productos
-        res.status(200).json(ofertas);
+        const keyword = req.query.keyword || '';
+
+        // Ensure only to proceed if a keyword is provided
+        const jobOffers = keyword
+            ? await jobOfferModel.find({
+                $or: [
+                    { puesto:  { $regex: `.*${keyword}.*`, $options: 'i' } },
+                    { empresa: { $regex: `.*${keyword}.*`, $options: 'i' }},
+                    { descripcion: { $regex: `.*${keyword}.*`, $options: 'i' }},
+                    { modalidad:  { $regex: `.*${keyword}.*`, $options: 'i' } },
+                    { requisitos: { $regex: `.*${keyword}.*`, $options: 'i' }},
+                    { salario: { $regex: `.*${keyword}.*`, $options: 'i' }}
+                ],
+            })
+            : []; // Return empty array if no keyword is provided
+
+            res.render('jobOffers', { jobOffers });
     } catch (error) {
-        console.log(`ERROR: ${error.stack}`);
-        res.status(400).json({ msj: `ERROR: ${error.stack}` });
+        res.status(500).json({ error: 'Error al buscar ofertas de trabajo' });
     }
 };
 
@@ -62,7 +73,7 @@ const deleteOffer = async (req, res) => {
 
 module.exports = {
     createOffer,
-    getOffer,
+    getOffers,
     editOffer,
     deleteOffer
 };

@@ -329,6 +329,64 @@ html, body {
   font-weight: bold;
 }
 
+/* Menú hamburguesa */ 
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Icono de menú hamburguesa */
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  gap: 5px;
+}
+
+.menu-icon span {
+  height: 4px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* Estilos del menú */
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+}
+
+.menu button {
+  margin: 5px 0;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background-color: #0056b3;
+}
+
 /* Diseño responsive */
 @media (max-width: 768px) {
   .dashboard-search-container {

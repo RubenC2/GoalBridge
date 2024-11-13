@@ -14,8 +14,6 @@ router.get('/userprofile', (req, res) => res.render('userProfile')); // Vista de
 
 router.get('/register', (req, res) => res.render('register')); //Vista de registro de usuario
 
-router.get('/login', (req, res) => res.render('loginForm')); //Vista de ingreso de usuario ya registrado
-
 router.get('/profile', authMiddleware, authorizeRole('admin'), (req, res) => {  // Vista del usuario o el administrador con sus datos de perfil
     res.render('dashboard', { role: 'admin' });
 });
