@@ -58,7 +58,13 @@ async function createUser({ nombre, apellidos, email, password }) {
     throw err; // 
   }
 }
-
+// {
+//     "nombre": "Damian",
+//     "apellidos": "Orellana",
+//     "email": "damian@gmail.com",
+//     "password": "123456",
+//     "rol": "user"
+// }
 
 //UPDATE
 const updateUser = async (title) => {
