@@ -1,11 +1,11 @@
 
 const queries = {
     getUSerByEmail: `
-    SELECT +
+    SELECT *
     FROM users 
     WHERE email=$1`,
     getAllUsers: `SELECT * FROM users`,
-    createUser: `INSERT INTO users (nombre, apellido, email, password) 
+    createUser: `INSERT INTO users (nombre, apellidos, email, password) 
     VALUES ($1, $2, $3, $4)`,
     updateUser: `UPDATE users
     SET nombre = $1 , apellidos = $2, email = $3, password = $4
