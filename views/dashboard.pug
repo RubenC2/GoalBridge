@@ -1,42 +1,23 @@
-//- dashboard.pug
 doctype html
 html(lang="es")
   head
     meta(charset="UTF-8")
-    title Admin Dashboard - GoalBridge
-    link(rel="stylesheet", href="/css/style.css")
-  
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Lista de Usuarios
   body
-    block content
-      .dashboard-container
-        // Formulario para crear un nuevo anuncio
-        h2.dashboard-title Crear un nuevo anuncio
-        form.dashboard-form(action="/joboffers/", method="POST")
-          
-          .dashboard-form-group
-            label(for="puesto") Puesto
-            input(type="text", id="puesto", name="puesto", required)
+    h1 Lista de Usuarios
 
-          .dashboard-form-group
-            label(for="empresa") Empresa
-            input(type="text", id="empresa", name="empresa", required)
-
-          .dashboard-form-group
-            label(for="salario") Salario
-            input(type="text", id="salario", name="salario", required)
-
-          .dashboard-form-group
-            label(for="descripcion") Descripción
-            input(type="text", id="descripcion", name="descripcion", required)
-
-          .dashboard-form-group
-            label(for="modalidad") Modalidad
-            input(type="text", id="modalidad", name="modalidad", required)
-
-          .dashboard-form-group
-            label(for="requisitos") Requisitos
-            input(type="text", id="requisitos", name="requisitos", required)
-
-          button.dashboard-submit(type="submit") Crear anuncio
-          include footer
-          script(src="index.js")
+    table
+      thead
+        tr
+          th Nombre
+          th Apellidos
+          th Email
+          th Rol
+      tbody
+        each usuario in usuarios
+          tr
+            td= usuario.nombre
+            td= usuario.apellidos
+            td= usuario.email
+            td= usuario.rol
