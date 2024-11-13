@@ -344,19 +344,18 @@ body {
 
 /* Icono de menú hamburguesa */
 .menu-icon {
+  padding-top: 0px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  width: 30px;
-  gap: 5px;
+  width: 100px; /* Aumenta el tamaño total del icono */
+  gap: 8px; /* Aumenta el espacio entre las líneas */
 }
 
-.menu-icon span {
-  height: 4px;
-  width: 100%;
-  background-color: #333;
-  border-radius: 5px;
-  transition: 0.3s;
+.menu-icon div { /* Suponiendo que cada línea del icono es un <div> */
+  height: 7px; /* Aumenta la altura de las líneas */
+  background-color: #000; /* Color de las líneas */
+  border-radius: 3px; /* Opcional, para bordes redondeados */
 }
 
 /* Estilos del menú */
@@ -404,5 +403,289 @@ body {
 
   .dashboard-job-offers-list {
     gap: 15px;
+  }
+}
+
+/* ------------------------REGISTER------------------------- */
+/* Registro Page */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 120px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+form {
+  width: 100%;
+}
+
+form label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555;
+  display: block;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  border-color: #0073e6;
+  outline: none;
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #004bb5;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 1rem;
+    margin-top: 80px;
+  }
+
+  form label {
+    font-size: 1rem;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    font-size: 1rem;
+  }
+
+  form button[type="submit"] {
+    font-size: 1.1rem;
+  }
+}
+/* --------------------------HOME----------------------- */
+/* Reset de margenes y paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fuentes y colores */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Sección de bienvenida */
+/* .welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #4caf50, #2196f3);
+  color: white;
+  padding: 40px;
+  text-align: center;
+} */
+/* Estilo para la sección que contiene el botón */
+.buscar-chamba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;  /* Asegura que el botón se posicione encima del footer */
+  bottom: 20px;  /* Distancia desde el fondo de la página */
+  width: 100%;
+  z-index: 10;  /* Asegura que quede por encima del footer */
+}
+
+/* Estilo del botón */
+.btn-primary {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  padding: 15px 30px; /* Tamaño del botón */
+  font-size: 18px; /* Tamaño de la fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Cambio de color cuando el ratón pasa sobre el botón */
+}
+
+/* Estilo del icono (opcional, según lo que quieras hacer con el icono) */
+.busqueda.de.chamba {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+  font-size: 20px; /* Tamaño del icono */
+}
+
+.header-welcome {
+  margin-bottom: 30px;
+}
+
+.title-welcome {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center; /* Centra el texto */
+}
+
+
+
+.btn-primary {
+  padding: 15px 30px;
+  background-color: #ff9800;
+  color: white;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #f57c00;
+}
+
+/* Sección de características */
+.features-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.features-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.features-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+}
+
+.icon {
+  font-size: 3rem;
+  color: #2196f3;
+  margin-bottom: 15px;
+}
+
+.feature-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Pie de página */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-text {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-item {
+    width: 80%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-welcome {
+    font-size: 2rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    font-size: 1rem;
+  }
+
+  .feature-item {
+    width: 90%;
   }
 }

@@ -1,20 +1,36 @@
-//- header.pug
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    title Header - GoalBridge
+    link(rel="stylesheet", href="/css/style.css")
 
-header
-  //- Ícono del menú hamburguesa que controla todo el menú
-  .menu-icon(onclick="toggleMenu()")
-    p ☰
+  body
+    //- header.pug
+    header
+      h1(class="title-welcome") Bienvenido a GoalBridge
+      .menu-icon(onclick="toggleMenu()")
+        p ☰
+      p(class="intro-text") Encuentra el empleo de tus sueños con nuestra plataforma. ¡Fácil, rápido y accesible!
+      
+      //- Ícono del menú hamburguesa que controla todo el menú
+      //- .menu-icon(onclick="toggleMenu()")
+      //-   p ☰
 
-  //- Menú desplegable que incluye la navegación y botones de acción
-  .menu#menu
-    //- Navegación principal
-    nav
-      a(href="/") Home
-      a(href="/favoritos") Favoritos
-      a(href="/perfil") Perfil
-      a(href="#") Ajustes
+      //- Menú desplegable que incluye la navegación y botones de acción
+      .menu#menu
+        //- Navegación principal
+        nav
+          a(href="/") Home
+          a(href="/favoritos") Favoritos
+          a(href="/perfil") Perfil
+          a(href="#") Ajustes
 
-    //- Submenú con botones de acción
-    .menu-actions
-      button(onclick="registrate()") Regístrate
-      button(onclick="iniciaSesion()") Inicia Sesión
+        //- Submenú con botones de acción
+        .menu-actions
+          button(onclick="registrate()") Regístrate
+          button(onclick="iniciaSesion()") Inicia Sesión
+
+    // Scripts
+    script(src="index.js")
+    script(src="/js/script.js")
