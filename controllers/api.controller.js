@@ -3,9 +3,9 @@ const dbPostgres = require('../config/db_pgsql'); // Conexión a PostgreSQL
 
 const addFavorite = async (req, res) => {
     const ofertaId = req.body.ofertaId;  // ID de la oferta en MongoDB
-    const usuarioId = req.body.usuarioId; // ID del usuario en PostgreSQL
+    const email = req.body.email;        // Email del usuario, que se pasa en la solicitud
 
-    if (!ofertaId || !usuarioId) {
+    if (!ofertaId || !email) {
         return res.status(400).json({ message: "Datos insuficientes" });
     }
 
@@ -16,7 +16,17 @@ const addFavorite = async (req, res) => {
             return res.status(404).json({ message: 'Oferta no encontrada en MongoDB' });
         }
 
-        // Inserta en PostgreSQL usando client.query
+        // Obtener el usuarioId desde la base de datos PostgreSQL
+        const userQuery = 'SELECT id FROM users WHERE email = $1';
+        const result = await dbPostgres.query(userQuery, [email]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Usuario no encontrado en PostgreSQL' });
+        }
+
+        const usuarioId = result.rows[0].id;  // El ID del usuario
+
+        // Inserta el favorito en la tabla de favoritos en PostgreSQL
         const query = 'INSERT INTO favorites(users_id, offers_id) VALUES($1, $2)';
         const values = [usuarioId, ofertaId];
         
@@ -28,5 +38,6 @@ const addFavorite = async (req, res) => {
         res.status(500).json({ message: 'Error al agregar a favoritos', error });
     }
 };
+
 
 module.exports = { addFavorite };
