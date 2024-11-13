@@ -3,11 +3,14 @@ html
   head
     title GoalBridge - Bienvenido
     link(rel="stylesheet" href="/css/style.css")
+
   body(class="profile-background")
+    // Incluir el header
     include header
 
     main(class="profile-background")
       .container
+        // Sección izquierda - Búsqueda de ofertas de trabajo
         .left-section
           section.job-search
             h3 Buscar ofertas de trabajo
@@ -15,6 +18,7 @@ html
               input(type="text" name="keyword" placeholder="Buscar empleo..." required)
               button(type="submit") Buscar
 
+        // Sección central - Favoritos
         .center-section
           section.favorites
             h3 Tus Favoritos
@@ -23,8 +27,9 @@ html
               p Correo: #[span#correo]
               button.remove-button
                 i(class="fa fa-trash") Eliminar
-              // Aquí puedes agregar más elementos de favoritos
+              // Puedes agregar más elementos de favoritos aquí
 
+        // Sección derecha - Publicaciones recientes
         .right-section
           section.recent-posts
             h3 Publicaciones más recientes
@@ -34,7 +39,10 @@ html
             .post-item
               p Publicación 2
               p Breve descripción de la publicación
-            // Aquí puedes agregar más publicaciones recientes
+            // Puedes agregar más publicaciones recientes aquí
 
+    // Incluir el footer
     include footer
 
+    // Scripts
+    script(src="/js/script.js")

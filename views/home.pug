@@ -1,33 +1,32 @@
-// profile.pug
-
+//- index.pug
 doctype html
 html(lang="es")
   head
-    meta(charset="UTF-8")
-    title Perfil de Usuario - GoalBridge
-    link(rel="stylesheet", href="/css/style.css")
+    title Bienvenido a GoalBridge
+    link(rel="stylesheet", href="css/style.css")
   body
-    include header
-      nav 
-    main
-      section.profile-container
-        h1 Perfil de Usuario
-        .user-info
-          p Nombre: Juan Pérez
-          p Correo electrónico: juan.perez@email.com
-          p Ubicación: Madrid, España
-          p Última actualización: 11 de noviembre de 2024
-          
-        .favorite-button
-          button(onclick="window.location.href='/favorites'") Ver mis favoritos
+    include header 
+    section(class="features-section")
+      h2(class="features-title") ¿Por qué elegir GoalBridge?
+      div(class="features-container")
+        div(class="feature-item")
+          i(class="icon fas fa-search") 
+          h3 Busca Ofertas Globales
+          p Encuentra ofertas de empleo de empresas líderes de todo el mundo.
+        div(class="feature-item")
+          i(class="icon fas fa-filter") 
+          h3 Filtra según tus habilidades
+          p Personaliza la búsqueda según tus intereses y experiencia.
+        div(class="feature-item")
+          i(class="icon fas fa-bookmark") 
+          h3 Guarda tus Favoritos
+          p Guarda las ofertas que más te interesen y vuelve a ellas cuando quieras.
+        div(class="buscar-chamba")
+          i(class="busqueda de chamba")
+          a(href="/joboffers" class="btn-primary") Comienza a Buscar CHAMBA
 
-        .recent-activities
-          h2 Actividades recientes
-          ul
-            li Última oferta guardada: "Desarrollador Web Junior" - 5 de noviembre de 2024
-            li Última oferta aplicada: "Desarrollador Frontend" - 3 de noviembre de 2024
-            li Última actualización de perfil: "Actualización de ubicación" - 11 de noviembre de 2024
 
-    footer
-      p © 2024 GoalBridge, todos los derechos reservados.
-
+    footer(class="footer")
+      p(class="footer-text") 2024 © GoalBridge - Todos los derechos reservados.
+      
+          script(src="/js/script.js")
