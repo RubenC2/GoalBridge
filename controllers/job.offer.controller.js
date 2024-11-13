@@ -1,5 +1,4 @@
-const jobOfferModel = require('../models/job.offer.model');  // Importación del modelo Product
-const jobOfferService = require('../services/job.offer.service');
+const { JobOffer, createOrUpdateOffer } = require('../models/job.offer.model');
 
 // CREATE
 const createOffer = async (req, res) => {
@@ -7,11 +6,59 @@ const createOffer = async (req, res) => {
 
     try {
         const data = req.body;
-        let answer = await new jobOfferModel(data).save();  // Guarda un nuevo producto
+        let answer = await createOrUpdateOffer(data);
         res.status(201).json(answer);
     } catch (error) {
         console.log(`ERROR: ${error.stack}`);
         res.status(400).json({ msj: `ERROR: ${error.stack}` });
+    }
+};
+const scrapOffers = async (req, res) => {
+    try {
+        const keyword = req.query.keyword || '';
+        console.log('Search keyword:', keyword);
+
+        const jobOffers = keyword
+            ? await JobOffer.find({
+                $or: [
+                    { puesto: { $regex: keyword, $options: 'i' } },
+                    { empresa: { $regex: keyword, $options: 'i' } },
+                    { descripcion: { $regex: keyword, $options: 'i' } },
+                    { modalidad: { $regex: keyword, $options: 'i' } },
+                    { requisitos: { $regex: keyword, $options: 'i' } },
+                    { salario: { $regex: keyword, $options: 'i' } },
+                    { link: { $regex: keyword, $options: 'i' } }
+                ],
+            }).limit(100)
+            : [];
+
+        // Truncate long text fields and handle duplicate content
+        const processedJobOffers = jobOffers.map(offer => {
+            const offerObj = offer.toObject();
+            
+            // Truncate descripcion
+            offerObj.descripcion = offerObj.descripcion.length > 150 
+                ? offerObj.descripcion.substring(0, 147) + '...' 
+                : offerObj.descripcion;
+            
+            // Truncate requisitos
+            offerObj.requisitos = offerObj.requisitos.length > 150 
+                ? offerObj.requisitos.substring(0, 147) + '...' 
+                : offerObj.requisitos;
+            
+            // Check if descripcion and requisitos are identical
+            if (offerObj.descripcion === offerObj.requisitos) {
+                offerObj.requisitos = 'No se proporcionaron requisitos específicos.';
+            }
+            
+            return offerObj;
+        });
+
+        console.log('Found job offers:', processedJobOffers.length);
+        res.render('jobOffers', { jobOffers: processedJobOffers, keyword });
+    } catch (error) {
+        console.error('Error al buscar ofertas de trabajo:', error);
+        res.status(500).render('error', { message: 'Error al buscar ofertas de trabajo' });
     }
 };
 
@@ -43,14 +90,14 @@ const getOffers = async (req, res) => {
 // UPDATE
 const editOffer = async (req, res) => {
     try {
-        const ofertaActualizada = await jobOfferService.actualizarOferta(req.params.id, req.body);
+        const ofertaActualizada = await JobOffer.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (ofertaActualizada) {
-            res.status(201).json({
-                message: "Producto actualizado",
-                product: ofertaActualizada
+            res.status(200).json({
+                message: "Oferta actualizada",
+                offer: ofertaActualizada
             });
         } else {
-            res.status(404).json({ mensaje: 'Producto no encontrado' });
+            res.status(404).json({ mensaje: 'Oferta no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ mensaje: error.message });
@@ -60,11 +107,11 @@ const editOffer = async (req, res) => {
 // DELETE
 const deleteOffer = async (req, res) => {
     try {
-        const oferta = await jobOfferService.eliminarOferta(req.params.id);
+        const oferta = await JobOffer.findByIdAndDelete(req.params.id);
         if (oferta) {
-            res.json({ message: `Se ha borrado la oferta: ${oferta}` });
+            res.json({ message: `Se ha borrado la oferta: ${oferta.puesto}` });
         } else {
-            res.status(404).json({ mensaje: 'oferta no encontrada' });
+            res.status(404).json({ mensaje: 'Oferta no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ mensaje: error.message });
@@ -75,6 +122,6 @@ module.exports = {
     createOffer,
     getOffers,
     editOffer,
-    deleteOffer
+    deleteOffer,
+    scrapOffers
 };
-
