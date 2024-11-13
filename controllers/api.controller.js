@@ -5,7 +5,7 @@ const dbPostgres = require('../config/db_pgsql'); // Conexión a PostgreSQL
 // Funcion que almacena con boton pero solo en un id unico que le paso por valor a usuarioID
 const addFavorite = async (req, res) => {
     const ofertaId = req.body.ofertaId;  // ID de la oferta en MongoDB
-    const usuarioId = 3; // ID del usuario en PostgreSQL (ejemplo estático)
+    const usuarioId = 2; // ID del usuario en PostgreSQL (ejemplo estático)
 
     if (!ofertaId || !usuarioId) {
         return res.status(400).json({ success: false, message: "Datos insuficientes" });
@@ -70,6 +70,7 @@ const addFavorite = async (req, res) => {
 //         res.status(500).json({ message: 'Error al agregar a favoritos', error });
 //     }
 // };
+
 
 
 

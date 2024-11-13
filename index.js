@@ -37,7 +37,7 @@ const userRoutes = require("./routes/users.routes")
 const jobOfferRoutes = require("./routes/job.offer.routes")
 const authRoutes = require("./routes/auth.routes")
 const apiRoutes = require("./routes/api.routes")
-// const adminRoutes = require("./routes/admin.routes")
+const adminRoutes = require("./routes/admin.routes")
 
 
 
@@ -48,7 +48,7 @@ app.use('/joboffers',jobOfferRoutes);
 app.use('/auth', authRoutes); 
 app.use('/api', apiRoutes); 
 
-// app.use('/admin', adminRoutes); 
+app.use('/admin', adminRoutes); 
 
 
 //middleware for 404

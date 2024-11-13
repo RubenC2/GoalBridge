@@ -1,12 +1,12 @@
-// const express = require('express');
-// // Rutas 
-// const webController = require("../controllers/web.controller");
-// const router = express.Router();
-// const authMiddleware = require('../middlewares/authMiddleware');
-// const authorizeRole = require('../middlewares/roleMiddleware');
+const express = require('express');
+// Rutas 
+const webController = require("../controllers/web.controller");
+const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
+const authorizeRole = require('../middlewares/roleMiddleware');
 
-// router.get('/dashboard/users', (req, res) => {
-//     res.render('dashboard')
-// });
+router.get('/users', (req, res) => {
+    res.render('dashboardProfile')
+});
 
-// module.exports = router;
+module.exports = router;
