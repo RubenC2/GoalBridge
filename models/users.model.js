@@ -53,7 +53,7 @@ async function createUser(data) {
 
     
     // Ejecuta la consulta, pasando los parámetros como array
-    const result = await pool.query(queryText, [nombre, apellidos, email, password]);
+    const result = await pool.query(createUser, [nombre, apellidos, email, password]);
     
     // Retorna el resultado si se ha insertado exitosamente
     return result.rows[0];
