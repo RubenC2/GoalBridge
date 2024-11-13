@@ -1,3 +1,4 @@
+
 # GoalBridge - Plataforma Inteligente de Búsqueda de Empleo
 
 🌐 **[goalbridge.onrender.com](https://goalbridge.onrender.com)**
@@ -39,3 +40,40 @@ Sigue estos pasos para configurar y ejecutar GoalBridge en tu entorno local:
 1. **Clonar el Repositorio**
    ```bash
    git clone git@github.com:RubenC2/GoalBridge.git
+   Instalar Dependencias
+   
+Asegúrate de tener Node.js y npm instalados. Luego, instala las dependencias del proyecto:
+
+bash
+Copiar código
+npm install
+Iniciar la Aplicación
+
+bash
+Copiar código
+npm start
+Acceder a GoalBridge
+Abre tu navegador y ve a http://localhost:3000 para interactuar con la plataforma.
+
+🗂️ Estructura del Proyecto
+bash
+Copiar código
+├── public/             # Archivos estáticos (CSS, JS)
+├── views/              # Vistas generadas con Pug
+├── models/             # Modelos de base de datos
+├── routes/             # Rutas de la aplicación
+├── controllers/        # Lógica de negocio y controladores
+├── .env                # Variables de entorno (no incluir en control de versiones)
+├── app.js              # Archivo principal de la aplicación
+└── README.md           # Documentación del proyecto
+🤝 Contribuciones
+¡Las contribuciones son bienvenidas! Si deseas colaborar en el proyecto, sigue estos pasos:
+
+Haz un Fork del repositorio.
+Crea una rama para tu característica: git checkout -b feature/nueva-funcionalidad.
+Realiza tus cambios y confirma los commits: git commit -m 'Agrega nueva funcionalidad'.
+Envía tu rama al repositorio: git push origin feature/nueva-funcionalidad.
+Abre una Pull Request para revisión.
+📜 Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+
