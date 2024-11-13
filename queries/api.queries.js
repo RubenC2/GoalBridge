@@ -1,6 +1,5 @@
 const apiQueries = {
-    createNewUser: 
-    `INSERT INTO user2 (username, password, email, role) 
-    VALUES ($1, $2, $3, $4)`,
+    addFavorite: `INSERT INTO favorites(users_id, offers_id) 
+    VALUES($1, $2)`
 }
 module.exports = apiQueries;
