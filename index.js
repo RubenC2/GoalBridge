@@ -35,12 +35,15 @@ app.use(express.json());
 const webRoutes = require("./routes/web.routes") // Importa rutas
 const userRoutes = require("./routes/users.routes")
 const jobOfferRoutes = require("./routes/job.offer.routes")
+const authRoutes = require("./routes/auth.routes")
 
 
 // Habilitacion de rutas
 app.use('/', webRoutes); 
 app.use('/user',userRoutes);
 app.use('/joboffers',jobOfferRoutes);
+app.use('/auth', authRoutes); 
+
 
 //-------------------prueba get-----------------
 async function buscarOfertas() {

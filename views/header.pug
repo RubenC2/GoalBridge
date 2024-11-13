@@ -1,15 +1,20 @@
 //- header.pug
+
 header
-  //- Icono del menú hamburguesa
-  .menu-icon
+  //- Ícono del menú hamburguesa que controla todo el menú
+  .menu-icon(onclick="toggleMenu()")
     p ☰
 
-  //- Menú desplegable
-  nav.menu
-     a(href="/") Home
-     a(href="/favoritos") Favoritos
-     a(href="/perfil") Perfil
-     a(href="#") Ajustes
-       
-          
+  //- Menú desplegable que incluye la navegación y botones de acción
+  .menu#menu
+    //- Navegación principal
+    nav
+      a(href="/") Home
+      a(href="/favoritos") Favoritos
+      a(href="/perfil") Perfil
+      a(href="#") Ajustes
 
+    //- Submenú con botones de acción
+    .menu-actions
+      button(onclick="registrate()") Regístrate
+      button(onclick="iniciaSesion()") Inicia Sesión
