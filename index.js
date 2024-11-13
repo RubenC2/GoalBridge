@@ -36,6 +36,8 @@ const webRoutes = require("./routes/web.routes") // Importa rutas
 const userRoutes = require("./routes/users.routes")
 const jobOfferRoutes = require("./routes/job.offer.routes")
 const authRoutes = require("./routes/auth.routes")
+const adminRoutes = require("./routes/admin.routes")
+
 
 
 // Habilitacion de rutas
@@ -43,37 +45,7 @@ app.use('/', webRoutes);
 app.use('/user',userRoutes);
 app.use('/joboffers',jobOfferRoutes);
 app.use('/auth', authRoutes); 
-
-
-//-------------------prueba get-----------------
-async function buscarOfertas() {
-    const keyword = document.getElementById('keyword').value;
-    const response = await fetch(`/joboffers/buscar?keyword=${encodeURIComponent(keyword)}`);
-    const ofertas = await response.json();
-  
-    const resultadosDiv = document.getElementById('resultados');
-    resultadosDiv.innerHTML = '';
-  
-    if (ofertas.length === 0) {
-      resultadosDiv.innerHTML = '<p>No se encontraron ofertas.</p>';
-      return;
-    }
-  
-    ofertas.forEach((oferta) => {
-      const ofertaDiv = document.createElement('div');
-      ofertaDiv.classList.add('oferta-item');
-      ofertaDiv.innerHTML = `
-        <h3>${oferta.puesto}</h3>
-        <p><strong>Empresa:</strong> ${oferta.empresa}</p>
-        <p><strong>Salario:</strong> ${oferta.salario}</p>
-        <p><strong>Descripción:</strong> ${oferta.descripcion}</p>
-        <p><strong>Modalidad:</strong> ${oferta.modalidad}</p>
-        <p><strong>Requisitos:</strong> ${oferta.requisitos}</p>
-      `;
-      resultadosDiv.appendChild(ofertaDiv);
-    });
-  }
-//--------------------------------------------
+app.use('/admin', adminRoutes); 
 
 
 //middleware for 404
