@@ -19,7 +19,7 @@ const getUsers = async (req, res) => {
         }
         
         // Pasamos los usuarios a la vista Pug
-        res.render('dashboard', { usuarios: users });
+        res.render('dashboardProfile', { usuarios: users });
     } catch (err) {
         // Si hay un error, podemos manejarlo adecuadamente
         res.status(500).send('Error al obtener los usuarios: ' + err);
