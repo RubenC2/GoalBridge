@@ -2,17 +2,20 @@ doctype html
 html(lang="es")
   head
     meta(charset="UTF-8")
-    title Admin Dashboard - GoalBridge
+    title Job Offers - GoalBridge
     link(rel="stylesheet", href="/css/style.css")
-  
+    include header
+
   body
     block content
+      // Sección de búsqueda de ofertas de trabajo
       .dashboard-search-container
         h2 Buscar Ofertas de Trabajo
         form(action="/joboffers", method="GET", class="dashboard-search-form")
           input(type="text", name="keyword", class="dashboard-search-input", placeholder="Buscar por palabra clave")
           button(type="submit", class="dashboard-search-button") Buscar
 
+      // Sección de resultados de búsqueda
       .dashboard-results-container
         if jobOffers && jobOffers.length > 0
           h3 Resultados de búsqueda:
@@ -42,5 +45,9 @@ html(lang="es")
         else
           p No se encontraron ofertas para la búsqueda proporcionada.
 
-      // Botón para regresar
+      // Botón para regresar a la búsqueda
       button(type="button", class="dashboard-back-button", onclick="window.history.back()") Volver a la búsqueda
+
+    // Scripts
+    script(src="index.js")
+    script(src="/js/script.js")

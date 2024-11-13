@@ -1,12 +1,11 @@
-//- dashboard.pug
 doctype html
 html(lang="es")
   head
     meta(charset="UTF-8")
-    title Admin Dashboard - GoalBridge
-    link(rel="stylesheet", href="/css/style.css")
-  
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Lista de Usuarios
   body
+    include header 
     block content
       .dashboard-container
         // Formulario para crear un nuevo anuncio
@@ -40,3 +39,5 @@ html(lang="es")
           button.dashboard-submit(type="submit") Crear anuncio
           include footer
           script(src="index.js")
+          script(src="/js/script.js")
+

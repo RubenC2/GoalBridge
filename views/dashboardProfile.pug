@@ -1,0 +1,23 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Lista de Usuarios
+  body
+    h1 Lista de Usuarios
+
+    table
+      thead
+        tr
+          th Nombre
+          th Apellidos
+          th Email
+          th Rol
+      tbody
+        each usuario in usuarios
+          tr
+            td= usuario.nombre
+            td= usuario.apellidos
+            td= usuario.email
+            td= usuario.rol

@@ -3,8 +3,9 @@ const router = express.Router();
 const jobOfferController = require('../controllers/job.offer.controller');
 const { JobOffer } = require('../models/job.offer.model');
 
-// Create a new job offer
 router.post("/", jobOfferController.createOffer);
+router.get("/create", (req, res) => res.render('dashboard'));
+
 
 // Search for job offers
 router.get('/', jobOfferController.scrapOffers);
@@ -19,3 +20,4 @@ router.put('/:id', jobOfferController.editOffer);
 router.delete('/:id', jobOfferController.deleteOffer);
 
 module.exports = router;
+
