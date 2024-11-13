@@ -9,7 +9,6 @@ require('dotenv').config();
 //     password: '123456'
      
 // })
-console.log(process.env.DB_USER, process.env.DB_HOST, process.env.DB_DATABASE, process.env.DB_PASSWORD, process.env.DB_PORT)
 const pool = new Pool({  
     user: process.env.DB_USER, 
     host: process.env.DB_HOST, 
