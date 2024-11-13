@@ -40,10 +40,8 @@ const getAllUsers = async () => {
 
 
 // CREATE
-async function createUser(data) {
+async function createUser({ nombre, apellidos, email, password }) {
   try {
-    // Extrae y valida los parámetros necesarios
-    const { nombre, apellidos, email, password } = data;
     
     // Verificación de que ninguno de los parámetros sea null o undefined
     if (!nombre || !apellidos || !email || !password) {
@@ -51,12 +49,9 @@ async function createUser(data) {
       return null; // Salir de la función si falta algún parámetro
     }
 
-    
-    // Ejecuta la consulta, pasando los parámetros como array
-    const result = await pool.query(queryText, [nombre, apellidos, email, password]);
-    
-    // Retorna el resultado si se ha insertado exitosamente
-    return result.rows[0];
+    const values = [nombre, apellidos, email, password];
+    const result = await pool.query(queries.createUser, values);
+    return result.data
     
   } catch (err) {
     console.error("Error ejecutando createUser:", err);
