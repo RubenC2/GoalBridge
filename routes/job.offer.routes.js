@@ -7,6 +7,6 @@ router.get('/', jobOfferController.getOffers);
 router.post("/", jobOfferController.createOffer);
 router.get("/create", (req, res) => res.render('dashboard'));
 
-
+//
 
 module.exports = router;
