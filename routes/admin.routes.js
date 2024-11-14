@@ -1,5 +1,6 @@
 const express = require('express');
 // Rutas 
+
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware');
 const authorizeRole = require('../middlewares/roleMiddleware');

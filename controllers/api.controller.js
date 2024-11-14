@@ -1,22 +1,22 @@
-const userModel = require('../models/job.offer.model'); // Modelo de usuario en MongoDB
+const offerModel = require('../models/jobOffer2'); // Modelo de usuario en MongoDB
 const dbPostgres = require('../config/db_pgsql'); // Conexión a PostgreSQL
 
 
-// Funcion que almacena con boton pero solo en un id unico que le paso por valor a usuarioID
 const addFavorite = async (req, res) => {
     const ofertaId = req.body.ofertaId;  // ID de la oferta en MongoDB
-    const usuarioId = 2; // ID del usuario en PostgreSQL (ejemplo estático)
+    const usuarioId = 9; // ID del usuario en PostgreSQL (ejemplo estático)
 
     if (!ofertaId || !usuarioId) {
         return res.status(400).json({ success: false, message: "Datos insuficientes" });
     }
 
     try {
-
-        const oferta = await userModel.findById(ofertaId);
+        // Cambia userModel a offerModel y asegúrate de que esté importado correctamente
+        const oferta = await offerModel.findById(ofertaId);
         if (!oferta) {
             return res.status(404).json({ success: false, message: 'Oferta no encontrada en MongoDB' });
         }
+
         const query = 'INSERT INTO favorites(users_id, offers_id) VALUES($1, $2)';
         const values = [usuarioId, ofertaId];
         
@@ -25,10 +25,10 @@ const addFavorite = async (req, res) => {
         res.redirect('/user/profile');
     } catch (error) {
         console.error('Error al agregar favorito:', error);
-
         res.status(500).json({ success: false, message: 'Error al agregar a favoritos' });
     }
 };
+
 
 
 // Funcion que almacena en favoritos por email
