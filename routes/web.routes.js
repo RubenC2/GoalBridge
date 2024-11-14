@@ -4,7 +4,8 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware');
 const authorizeRole = require('../middlewares/roleMiddleware');
-
+const validate = require('../middlewares/validator');
+const { loginValidationRules } = require('../validation/authValidators');
 
 // -------------------------
 // Rutas funcionando
