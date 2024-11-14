@@ -31,8 +31,8 @@ app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 app.use(express.json());        
 
 // -------------------------------------------------------------------------
-
-const webRoutes = require("./routes/web.routes") // Importa rutas
+// Importa rutas
+const webRoutes = require("./routes/web.routes") 
 const userRoutes = require("./routes/users.routes")
 const jobOfferRoutes = require("./routes/job.offer.routes")
 const authRoutes = require("./routes/auth.routes")
