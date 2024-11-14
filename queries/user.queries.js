@@ -1,9 +1,9 @@
 
 const queries = {
     getUSerByEmail: `
-    SELECT *
-    FROM users 
-    WHERE email=$1`,
+    SELECT id
+    FROM users
+    WHERE email = $1`,
     getAllUsers: `SELECT * FROM users`,
     createUser: `INSERT INTO users (nombre, apellidos, email, password) 
     VALUES ($1, $2, $3, $4)`,
