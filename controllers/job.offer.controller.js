@@ -92,15 +92,12 @@ const editOffer = async (req, res) => {
     try {
         const ofertaActualizada = await JobOffer.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (ofertaActualizada) {
-            res.status(200).json({
-                message: "Oferta actualizada",
-                offer: ofertaActualizada
-            });
+            res.redirect('/joboffers/create');
         } else {
-            res.status(404).json({ mensaje: 'Oferta no encontrada' });
+            res.status(404).send('Oferta no encontrada');
         }
     } catch (error) {
-        res.status(500).json({ mensaje: error.message });
+        res.status(500).send('Error al actualizar la oferta');
     }
 };
 
@@ -109,12 +106,12 @@ const deleteOffer = async (req, res) => {
     try {
         const oferta = await JobOffer.findByIdAndDelete(req.params.id);
         if (oferta) {
-            res.json({ message: `Se ha borrado la oferta: ${oferta.puesto}` });
+            res.redirect('/joboffers/create');
         } else {
-            res.status(404).json({ mensaje: 'Oferta no encontrada' });
+            res.status(404).send('Oferta no encontrada');
         }
     } catch (error) {
-        res.status(500).json({ mensaje: error.message });
+        res.status(500).send('Error al eliminar la oferta');
     }
 };
 

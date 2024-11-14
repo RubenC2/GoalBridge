@@ -4,20 +4,16 @@ const jobOfferController = require('../controllers/job.offer.controller');
 const { JobOffer } = require('../models/job.offer.model');
 
 router.post("/", jobOfferController.createOffer);
-router.get("/create", (req, res) => res.render('dashboard'));
-
-
-// Search for job offers
-router.get('/', jobOfferController.scrapOffers);
-
-// Get a specific job offer by ID
-router.get('/:id', jobOfferController.getOffer);
+router.get("/", jobOfferController.scrapOffers);
+router.get("/create", async (req, res) => {
+  const jobOffers = await JobOffer.find();
+  res.render('dashboard', { jobOffers });
+});
 
 // Update a specific job offer
-router.put('/:id', jobOfferController.editOffer);
+router.post('/:id/edit', jobOfferController.editOffer);
 
 // Delete a specific job offer
-router.delete('/:id', jobOfferController.deleteOffer);
+router.post('/:id/delete', jobOfferController.deleteOffer);
 
 module.exports = router;
-
