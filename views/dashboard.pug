@@ -7,87 +7,99 @@ html(lang="es")
 
   body
     //- header.pug
-    header
-block content
-  .dashboard-container
-    // Create Job Offer Form
-    section.create-offer-section
-      h2.section-title Crear un anuncio
-      form.dashboard-form(action="/joboffers", method="POST")
-        .dashboard-form-group
-          label(for="puesto") Puesto:
-          input(type="text", id="puesto", name="puesto", required)
-        .dashboard-form-group
-          label(for="empresa") Empresa:
-          input(type="text", id="empresa", name="empresa", required)
-        .dashboard-form-group
-          label(for="salario") Salario:
-          input(type="text", id="salario", name="salario", required)
-        .dashboard-form-group
-          label(for="descripcion") Descripción:
-          textarea#descripcion.form-textarea(name="descripcion", required)
-        .dashboard-form-group
-          label(for="modalidad") Modalidad:
-          input(type="text", id="modalidad", name="modalidad", required)
-        .dashboard-form-group
-          label(for="requisitos") Requisitos:
-          textarea#requisitos.form-textarea(name="requisitos", required)
-        .dashboard-form-group
-          label(for="link") Link:
-          input(type="text", id="link", name="link")
-        button.dashboard-submit(type="submit") Crear Oferta
+    include header    
 
-    // Search Job Offers
-    section.search-section
-      h2.section-title Buscar Ofertas de Trabajo
-      form.search-form(action="/joboffers", method="GET")
-        .search-group
-          input.search-input(type="text", name="keyword", placeholder="Buscar ofertas...")
-          button.search-button(type="submit") Buscar
+    block content
 
-    // Display Job Offers
-    section.offers-section
-      h2.section-title Ofertas de Trabajo
-      .offers-grid
-        each offer in jobOffers
-          .offer-card
-            h3.offer-title= offer.puesto
-            .offer-company
-              span.label Empresa: 
-              span.value= offer.empresa
-            .offer-salary
-              span.label Salario: 
-              span.value= offer.salario
-            .offer-description
-              span.label Descripción: 
-              span.value= offer.descripcion.length > 150 ? offer.descripcion.substring(0, 147) + '...' : offer.descripcion
-            .offer-modality
-              span.label Modalidad: 
-              span.value= offer.modalidad
-            .offer-requirements
-              span.label Requisitos: 
-              span.value= offer.requisitos.length > 150 ? offer.requisitos.substring(0, 147) + '...' : offer.requisitos
-            if offer.link
-              .offer-link
-                a.link-button(href=offer.link, target="_blank") Ver oferta original
-            .offer-actions
-              button.action-button.edit-button(onclick=`toggleEditForm('${offer._id}')`) Editar
-              form.delete-form(action=`/joboffers/${offer._id}/delete`, method="POST", style="display: inline;")
-                button.action-button.delete-button(type="submit") Eliminar
-            
-            .edit-form-container(id=`edit-form-${offer._id}`, style="display: none;")
-              form.edit-form(action=`/joboffers/${offer._id}/edit`, method="POST")
-                input(type="text", name="puesto", value=offer.puesto)
-                input(type="text", name="empresa", value=offer.empresa)
-                input(type="text", name="salario", value=offer.salario)
-                textarea(name="descripcion")= offer.descripcion
-                input(type="text", name="modalidad", value=offer.modalidad)
-                textarea(name="requisitos")= offer.requisitos
-                input(type="text", name="link", value=offer.link)
-                button.action-button.save-button(type="submit") Guardar Cambios
+      .dashboard-container
+        // Create Job Offer Form
+        section.create-offer
+          h2.create-offer-title Crear un anuncio
+          form.create-offer-form(action="/joboffers", method="POST")
+            .form-group
+              label(for="puesto") Puesto:
+              input(type="text", id="puesto", name="puesto", required)
+            .form-group
+              label(for="empresa") Empresa:
+              input(type="text", id="empresa", name="empresa", required)
+            .form-group
+              label(for="salario") Salario:
+              input(type="text", id="salario", name="salario", required)
+            .form-group
+              label(for="descripcion") Descripción:
+              textarea#descripcion.form-textarea(name="descripcion", required)
+            .form-group
+              label(for="modalidad") Modalidad:
+              input(type="text", id="modalidad", name="modalidad", required)
+            .form-group
+              label(for="requisitos") Requisitos:
+              textarea#requisitos.form-textarea(name="requisitos", required)
+            .form-group
+              label(for="link") Link:
+              input(type="text", id="link", name="link")
+            button.btn.btn-primary(type="submit") Crear Oferta
 
-  script.
-    function toggleEditForm(offerId) {
-      const formContainer = document.getElementById(`edit-form-${offerId}`);
-      formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
-    }
+        // Search Job Offers
+        section.search-offers
+          h2.search-title Buscar Ofertas de Trabajo
+          form.search-form(action="/joboffers", method="GET")
+            .search-group
+              input.search-input(type="text", name="keyword", placeholder="Buscar ofertas...")
+              button.btn.btn-secondary(type="submit") Buscar
+
+        // Display Job Offers
+        section.job-offers
+          h2.offers-title Ofertas de Trabajo
+          .offers-container
+            each offer in jobOffers
+              .offer-card
+                h3.offer-title= offer.puesto
+                .offer-details
+                  .offer-detail
+                    span.label Empresa: 
+                    span.value= offer.empresa
+                  .offer-detail
+                    span.label Salario: 
+                    span.value= offer.salario
+                  .offer-detail
+                    span.label Descripción: 
+                    span.value= offer.descripcion.length > 150 ? offer.descripcion.substring(0, 147) + '...' : offer.descripcion
+                  .offer-detail
+                    span.label Modalidad: 
+                    span.value= offer.modalidad
+                  .offer-detail
+                    span.label Requisitos: 
+                    span.value= offer.requisitos.length > 150 ? offer.requisitos.substring(0, 147) + '...' : offer.requisitos
+                
+                if offer.link
+                  .offer-link
+                    a.btn.btn-link(href=offer.link, target="_blank") Ver oferta original
+                
+                .offer-actions
+                  button.btn.btn-edit(onclick=`toggleEditForm('${offer._id}')`) Editar
+                  form.delete-form(action=`/joboffers/${offer._id}/delete`, method="POST", style="display: inline;")
+                    button.btn.btn-delete(type="submit") Eliminar
+
+                .edit-form-container(id=`edit-form-${offer._id}`, style="display: none;")
+                  form.edit-offer-form(action=`/joboffers/${offer._id}/edit`, method="POST")
+                    .form-group
+                      input(type="text", name="puesto", value=offer.puesto)
+                    .form-group
+                      input(type="text", name="empresa", value=offer.empresa)
+                    .form-group
+                      input(type="text", name="salario", value=offer.salario)
+                    .form-group
+                      textarea(name="descripcion")= offer.descripcion
+                    .form-group
+                      input(type="text", name="modalidad", value=offer.modalidad)
+                    .form-group
+                      textarea(name="requisitos")= offer.requisitos
+                    .form-group
+                      input(type="text", name="link", value=offer.link)
+                    button.btn.btn-save(type="submit") Guardar Cambios
+      include footer 
+    script.
+      function toggleEditForm(offerId) {
+        const formContainer = document.getElementById(`edit-form-${offerId}`);
+        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+      }
