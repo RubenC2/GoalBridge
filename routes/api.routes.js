@@ -1,11 +1,8 @@
-// const apiController = require('../controllers/api.controller');
-// const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const { addFavorite } = require('../controllers/api.controller');
 
+// Ruta para agregar una oferta a favoritoss
+router.post('/favorites', addFavorite);
 
-// router.get('/', apiController.getOffers);
-// router.post("/", apiController.createOffer);
-// router.get("/create", (req, res) => res.render('dashboard'));
-
-// //
-
-// module.exports = router;
+module.exports = router;

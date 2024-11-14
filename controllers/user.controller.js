@@ -11,17 +11,17 @@ const getUsers = async (req, res) => {
     
     try {
         if (req.query.email) {
-            // Si se proporciona un email, obtenemos un único usuario
+
             users = await userModel.getUserByEmail(req.query.email);
         } else {
-            // Si no se proporciona un email, obtenemos todos los usuarios
+            
             users = await userModel.getAllUsers();
         }
         
-        // Pasamos los usuarios a la vista Pug
+        
         res.render('dashboardProfile', { usuarios: users });
     } catch (err) {
-        // Si hay un error, podemos manejarlo adecuadamente
+        
         res.status(500).send('Error al obtener los usuarios: ' + err);
     }
 };
@@ -29,13 +29,19 @@ const getUsers = async (req, res) => {
 
 // CREAR
 const createUser = async (req, res) => {
-    const newUser = req.body; // {nombre,apellidos,email,password}
-    const response = await userModel.createUser(newUser);
-    res.status(201).json({
-        "user_created": response,
-        data: newUser
-    });
-}
+    const newUser = req.body; // {nombre, apellidos, email, password}
+
+    try {
+        const response = await userModel.createUser(newUser);
+
+        res.status(201).redirect('/user/profile');
+    } catch (error) {
+        console.error("Error al crear el usuario:", error);
+
+        res.status(400).json({ success: false, message: "Usuario ya existe" });
+    }
+};
+
 //ACTUALIZAR
 const updateUser = async (req, res) => {
     let user; 

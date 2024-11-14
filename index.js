@@ -36,8 +36,8 @@ const webRoutes = require("./routes/web.routes") // Importa rutas
 const userRoutes = require("./routes/users.routes")
 const jobOfferRoutes = require("./routes/job.offer.routes")
 const authRoutes = require("./routes/auth.routes")
-// const apiRoutes = require("./routes/api.routes")
-// const adminRoutes = require("./routes/admin.routes")
+const apiRoutes = require("./routes/api.routes")
+const adminRoutes = require("./routes/admin.routes")
 
 
 
@@ -45,11 +45,10 @@ const authRoutes = require("./routes/auth.routes")
 app.use('/', webRoutes); 
 app.use('/user',userRoutes);
 app.use('/joboffers',jobOfferRoutes);
-app.use('/', authRoutes); 
-// app.use('/api', apiRoutes); 
+app.use('/auth', authRoutes); 
+app.use('/api', apiRoutes); 
 
-
-// app.use('/admin', adminRoutes); 
+app.use('/admin', adminRoutes); 
 
 
 //middleware for 404

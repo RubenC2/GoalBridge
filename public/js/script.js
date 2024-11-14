@@ -10,5 +10,5 @@ function registrate() {
 }
 
 function iniciaSesion() {
-    window.location.href = "/login"; // Redirige a la página de inicio de sesión
+    window.location.href = "/user/login"; // Redirige a la página de inicio de sesión
 }

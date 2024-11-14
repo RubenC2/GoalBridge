@@ -39,8 +39,8 @@ html(lang="es")
                   strong Requisitos: 
                   | #{offer.requisitos}
                 // Botón para agregar a favoritos
-                form(action="/favorites/agregar", method="POST")
-                  input(type="hidden", name="offerId", value=offer._id)
+                form(action="/api/favorites", method="POST")
+                  input(type="hidden", name="ofertaId", value=offer._id)
                   button(type="submit", class="dashboard-add-favorites-button") Agregar a Favoritos
         else
           p No se encontraron ofertas para la búsqueda proporcionada.
