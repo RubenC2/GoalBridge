@@ -1,691 +1,246 @@
-/* Reset de márgenes y paddings */
+/* Variables */
+:root {
+  --background: #F4F7FC;
+  --primary: #1A2B3C;
+  --accent: #1E88E5;
+  --accent-green: #43A047;
+  --text: #2C3E50;
+  --text-light: #546E7A;
+  --white: #FFFFFF;
+  --gray-100: #F8F9FA;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --radius: 10px;
+  --header-height: 70px;
+}
+
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-/* Header fijo con un fondo oscuro */
-header {
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+/* Layout */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+/* Header & Navigation */
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 1.5rem;
-  background-color: #222;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  right: 0;
+  height: var(--header-height);
   z-index: 1000;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-/* Contenedor principal con 3 secciones */
-.profile-background {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 3rem;
-  width: 100%;
-  max-width: 1200px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin-top: 120px;
-  margin-bottom: 60px;
-}
-
-.container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-}
-
-.left-section, .center-section, .right-section {
-  width: 30%;
-  padding: 2rem;
-  background-color: #f1f1f1;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin-right: 1.5rem;
-}
-
-.left-section {
-  background-color: #fff;
-}
-
-.center-section {
-  background-color: #fff;
-}
-
-.right-section {
-  background-color: #fff;
-}
-
-/* Sección de Buscar */
-.job-search {
-  display: flex;
-  flex-direction: column;
-}
-
-.job-search input[type="text"] {
-  padding: 1rem;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.job-search button {
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.job-search button:hover {
-  background-color: #004bb5;
-}
-
-/* Sección de Favoritos */
-.favorites {
-  display: flex;
-  flex-direction: column;
-}
-
-.favorite-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-.remove-button {
-  background-color: transparent;
-  border: none;
-  color: #c00;
-  cursor: pointer;
-}
-
-.remove-button i {
-  font-size: 1.2rem;
-}
-
-/* Sección de Publicaciones */
-.recent-posts {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-item {
-  background-color: #f9f9f9;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.recent-posts h3 {
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-}
-
-.post-item p {
-  color: #555;
-}
-
-/* Diseño responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left-section, .center-section, .right-section {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-}
-/* -----------------------------DASHBOARD---------------------- */
-/* Estilos específicos para el dashboard */
-.dashboard-container {
-  max-width: 800px;
-  margin-top: 150px;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.dashboard-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.dashboard-form-group {
-  margin-bottom: 1.5rem;
-}
-
-.dashboard-form-group label {
-  display: block;
-  font-weight: bold;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.dashboard-form-group input[type="text"] {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-.dashboard-form-group input[type="text"]:focus {
-  border-color: #0073e6;
-  outline: none;
-}
-
-.dashboard-submit {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dashboard-submit:hover {
-  background-color: #004bb5;
-}
-
-/* --------------------Busqueda de trabajo GET-------------- */
-/* Estilos generales */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-/* Contenedor de búsqueda */
-.dashboard-search-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  padding: 20px;
+  padding: 0 2rem;
 }
 
-.dashboard-search-form {
+.nav-links {
   display: flex;
+  gap: 1.5rem;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
-.dashboard-search-input {
-  padding: 0.8rem;
-  font-size: 1.1rem;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.dashboard-search-button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dashboard-search-button:hover {
-  background-color: #004bb5;
-}
-
-/* Contenedor de resultados */
-.dashboard-results-container {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-job-offers-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.dashboard-offer-item {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-offer-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.dashboard-offer-item p {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-
-.dashboard-offer-item strong {
-  font-weight: bold;
-}
-
-.dashboard-offer-item p {
-  color: #555;
-}
-
-/* Estilos para el caso sin resultados */
-.dashboard-results-container p {
-  color: #c00;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* Menú hamburguesa */ 
-
-/* Estilos generales */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-}
-
-/* Icono de menú hamburguesa */
-.menu-icon {
-  padding-top: 0px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  width: 100px; /* Aumenta el tamaño total del icono */
-  gap: 8px; /* Aumenta el espacio entre las líneas */
-}
-
-.menu-icon div { /* Suponiendo que cada línea del icono es un <div> */
-  height: 7px; /* Aumenta la altura de las líneas */
-  background-color: #000; /* Color de las líneas */
-  border-radius: 3px; /* Opcional, para bordes redondeados */
-}
-
-/* Estilos del menú */
-.menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  flex-direction: column;
-}
-
-.menu button {
-  margin: 5px 0;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  background-color: #0056b3;
-}
-
-/* Diseño responsive */
-@media (max-width: 768px) {
-  .dashboard-search-container {
-    padding: 10px;
-  }
-
-  .dashboard-search-form {
-    flex-direction: column;
-  }
-
-  .dashboard-search-input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .dashboard-job-offers-list {
-    gap: 15px;
-  }
-}
-
-/* ------------------------REGISTER------------------------- */
-/* Registro Page */
-.register-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 800px;
-  width: 100%;
-  margin-top: 120px;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.register-container h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: #333;
-}
-
-form {
-  width: 100%;
-}
-
-form label {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #555;
-  display: block;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form input[type="text"] {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="password"]:focus {
-  border-color: #0073e6;
-  outline: none;
-}
-
-form button[type="submit"] {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-form button[type="submit"]:hover {
-  background-color: #004bb5;
-}
-
-/* Diseño responsive */
-@media (max-width: 768px) {
-  .register-container {
-    padding: 1rem;
-    margin-top: 80px;
-  }
-
-  form label {
-    font-size: 1rem;
-  }
-
-  form input[type="text"],
-  form input[type="email"],
-  form input[type="password"] {
-    font-size: 1rem;
-  }
-
-  form button[type="submit"] {
-    font-size: 1.1rem;
-  }
-}
-/* --------------------------HOME----------------------- */
-/* Reset de margenes y paddings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fuentes y colores */
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f7fc;
-  color: #333;
-}
-
-a {
+.nav-link {
+  color: var(--text);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-/* Sección de bienvenida */
-/* .welcome-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
   align-items: center;
-  background: linear-gradient(to right, #4caf50, #2196f3);
-  color: white;
-  padding: 40px;
-  text-align: center;
-} */
-/* Estilo para la sección que contiene el botón */
-.buscar-chamba {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  position: absolute;  /* Asegura que el botón se posicione encima del footer */
-  bottom: 20px;  /* Distancia desde el fondo de la página */
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: #1565C0;
+}
+
+/* Forms */
+.form-section {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.form-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.form-control {
   width: 100%;
-  z-index: 10;  /* Asegura que quede por encima del footer */
+  padding: 0.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  color: var(--text);
+  transition: border-color 0.2s;
 }
 
-/* Estilo del botón */
-.btn-primary {
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color del texto */
-  padding: 15px 30px; /* Tamaño del botón */
-  font-size: 18px; /* Tamaño de la fuente */
-  border-radius: 5px; /* Bordes redondeados */
-  text-decoration: none; /* Elimina el subrayado del enlace */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
 }
 
-.btn-primary:hover {
-  background-color: #0056b3; /* Cambio de color cuando el ratón pasa sobre el botón */
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
 }
 
-/* Estilo del icono (opcional, según lo que quieras hacer con el icono) */
-.busqueda.de.chamba {
-  margin-right: 10px; /* Espacio entre el icono y el texto */
-  font-size: 20px; /* Tamaño del icono */
+/* Search Section */
+.search-section {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
 }
 
-.header-welcome {
-  margin-bottom: 30px;
-}
-
-.title-welcome {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.intro-text {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  text-align: center; /* Centra el texto */
-}
-
-
-
-.btn-primary {
-  padding: 15px 30px;
-  background-color: #ff9800;
-  color: white;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-  background-color: #f57c00;
-}
-
-/* Sección de características */
-.features-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.features-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-.features-container {
+.search-form {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
 }
 
-.feature-item {
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  width: 250px;
-  margin-bottom: 30px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.feature-item:hover {
-  transform: translateY(-10px);
-}
-
-.icon {
-  font-size: 3rem;
-  color: #2196f3;
-  margin-bottom: 15px;
-}
-
-.feature-item h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-.feature-item p {
+.search-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
   font-size: 1rem;
-  color: #555;
+  transition: border-color 0.2s;
 }
 
-/* Pie de página */
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Job Cards */
+.job-card {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+.job-title {
+  color: var(--primary);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.job-company {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.job-description {
+  color: var(--text);
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Footer */
 .footer {
-  background-color: #333;
-  color: white;
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 1.5rem 0;
   text-align: center;
-  padding: 20px;
 }
 
-.footer-text {
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-/* Estilos responsivos */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .features-container {
+  .nav-links {
     flex-direction: column;
-    align-items: center;
+    gap: 1rem;
   }
 
-  .feature-item {
-    width: 80%;
+  .search-form {
+    flex-direction: column;
   }
 
-  .btn-primary {
+  .btn {
     width: 100%;
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .title-welcome {
-    font-size: 2rem;
-  }
-
-  .intro-text {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .btn-primary {
-    font-size: 1rem;
-  }
-
-  .feature-item {
-    width: 90%;
   }
 }
