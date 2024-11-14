@@ -47,7 +47,7 @@ jobOfferSchema.index({ puesto: 1, empresa: 1 }, { unique: true });
 // Create the model
 const JobOffer = mongoose.model("Offer", jobOfferSchema, "offers");
 
-// Helper function to handle job offer insertions or updates
+// // Helper function to handle job offer insertions or updates
 async function createOrUpdateOffer(offerData) {
     try {
         // If link is empty string, set it to null
