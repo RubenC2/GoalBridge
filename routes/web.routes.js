@@ -15,12 +15,7 @@ router.get('/register', (req, res) => res.render('register')); //Vista de regist
 // router.get('/profile', authMiddleware, authorizeRole('admin'), (req, res) => {  // Vista del usuario o el administrador con sus datos de perfil
 //     res.render('dashboard', { role: 'admin' });
 // });
-// Aqui va la ruta favoritos
-// router.get('/profile', authMiddleware, authorizeRole('user'), (req, res) => {  // Vista del usuario o el administrador con sus datos de perfil
-//     res.render('dashboard', { role: 'user' });
-// });
 
-// router.get('/users', webController.getUsers); // Vista del administrador con el listado de usuario registrados (admin)
 
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const userModel = require('../models/users.model');  // Importación del modelo Product
-const userService = require('../services/user.service');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
