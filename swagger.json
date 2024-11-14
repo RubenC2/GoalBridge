@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Usuarios y Ofertas de Trabajo",
+    "version": "1.0",
+    "description": "API para gestionar usuarios, ofertas de trabajo y favoritos."
+  },
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Obtiene todos los usuarios",
+        "description": "Devuelve una lista de todos los usuarios en la base de datos.",
+        "responses": {
+          "200": {
+            "description": "Lista de usuarios",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "nombre": {
+                        "type": "string",
+                        "example": "Juan Pérez"
+                      },
+                      "apellidos": {
+                        "type": "string",
+                        "example": "Garcia Garcia"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "juanperez@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "aabbcc123"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "summary": "Vista de perfil del usuario",
+        "description": "Muestra la página de perfil del usuario autenticado.",
+        "responses": {
+          "200": {
+            "description": "Página de perfil del usuario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "nombre": {
+                      "type": "string",
+                      "example": "Juan Pérez"
+                    },
+                    "apellidos": {
+                      "type": "string",
+                      "example": "Garcia Garcia"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "juanperez@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/joboffer": {
+      "post": {
+        "summary": "Crea una nueva oferta de trabajo",
+        "description": "Agrega una nueva oferta de trabajo a la base de datos.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Desarrollador Backend"
+                  },
+                  "company": {
+                    "type": "string",
+                    "example": "Empresa XYZ"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Ciudad de México"
+                  },
+                  "salary": {
+                    "type": "string",
+                    "example": "MXN 50,000 al mes"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Se requiere desarrollador con experiencia en Node.js y MongoDB."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Oferta de trabajo creada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Desarrollador Backend"
+                    },
+                    "company": {
+                      "type": "string",
+                      "example": "Empresa XYZ"
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "Ciudad de México"
+                    },
+                    "salary": {
+                      "type": "string",
+                      "example": "MXN 50,000 al mes"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "Inicia sesión del usuario",
+        "description": "Procesa la autenticación del usuario.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "juanperez@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "aabbcc123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Inicio de sesión exitoso"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          }
+        }
+      }
+    }
+  }
+}

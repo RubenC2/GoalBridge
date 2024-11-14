@@ -38,6 +38,8 @@ const jobOfferRoutes = require("./routes/job.offer.routes")
 const authRoutes = require("./routes/auth.routes")
 const apiRoutes = require("./routes/api.routes")
 const adminRoutes = require("./routes/admin.routes")
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 
 
@@ -48,6 +50,9 @@ app.use('/joboffers',jobOfferRoutes);
 app.use('/auth', authRoutes); 
 app.use('/api', apiRoutes); 
 app.use('/admin', adminRoutes); 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 
 
 //middleware for 404
