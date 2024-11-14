@@ -1,6 +1,5 @@
 const { createUser, getUserByEmail } = require('../models/users.model');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 async function register(req, res) {
     const { nombre, apellidos, email, password, rol } = req.body;
@@ -17,9 +16,10 @@ async function login(req, res) {
     try {
         const user = await getUserByEmail(email);
         // if (user && await bcrypt.compare(password, user.password)) {
-
+        console.log(user)
         if (user) {
-            const token = jwt.sign({ id: user.id, rol: user.rol }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign(
+                {user}, process.env.JWT_SECRET, { expiresIn: '1h' });
             res.cookie('token', token, { httpOnly: true });
             res.redirect(user.rol === 'admin' ? '/joboffers/create' : '/user/profile');
         } else {
