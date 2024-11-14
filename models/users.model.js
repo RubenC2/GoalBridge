@@ -1,5 +1,6 @@
 const queries = require('../queries/user.queries') // Queries SQL
 const pool = require('../config/db_pgsql')
+const bcrypt = require('bcryptjs');
 
 // GET
 const getUserByEmail = async (email) => {
@@ -48,7 +49,7 @@ async function createUser({ nombre, apellidos, email, password }) {
       console.error("Error: uno o más parámetros están undefined o null.");
       return null; // Salir de la función si falta algún parámetro
     }
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     const values = [nombre, apellidos, email, password];
     const result = await pool.query(queries.createUser, values);
     return result.data
@@ -58,6 +59,7 @@ async function createUser({ nombre, apellidos, email, password }) {
     throw err; // 
   }
 }
+
 // {
 //     "nombre": "Damian",
 //     "apellidos": "Orellana",

@@ -45,7 +45,7 @@ const authRoutes = require("./routes/auth.routes")
 app.use('/', webRoutes); 
 app.use('/user',userRoutes);
 app.use('/joboffers',jobOfferRoutes);
-app.use('/auth', authRoutes); 
+app.use('/', authRoutes); 
 // app.use('/api', apiRoutes); 
 
 
