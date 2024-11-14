@@ -15,9 +15,11 @@ const createOffer = async (req, res) => {
 };
 const scrapOffers = async (req, res) => {
     try {
-        const keyword = req.query.keyword || '';
-        console.log('Search keyword:', keyword);
+        const keyword = req.query.keyword || '';  // Extrae la palabra clave de búsqueda desde los parámetros de la URL
 
+        console.log('Search keyword:', keyword);  // Muestra en consola la palabra clave utilizada
+
+        // Busca ofertas de trabajo que coincidan con la palabra clave en varios campos, hasta un máximo de 100 resultados
         const jobOffers = keyword
             ? await JobOffer.find({
                 $or: [
@@ -32,35 +34,36 @@ const scrapOffers = async (req, res) => {
             }).limit(100)
             : [];
 
-        // Truncate long text fields and handle duplicate content
+        // Procesa y formatea cada oferta de trabajo encontrada
         const processedJobOffers = jobOffers.map(offer => {
-            const offerObj = offer.toObject();
-            
-            // Truncate descripcion
-            offerObj.descripcion = offerObj.descripcion.length > 150 
-                ? offerObj.descripcion.substring(0, 147) + '...' 
-                : offerObj.descripcion;
-            
-            // Truncate requisitos
-            offerObj.requisitos = offerObj.requisitos.length > 150 
-                ? offerObj.requisitos.substring(0, 147) + '...' 
-                : offerObj.requisitos;
-            
-            // Check if descripcion and requisitos are identical
+            const offerObj = offer.toObject();  // Convierte el objeto de mongoose a un objeto JavaScript simple
+
+            // Función para truncar texto largo con "..." si excede el límite de caracteres
+            const truncateText = (text, maxLength = 150) => 
+                text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
+
+            // Trunca la descripción y los requisitos de la oferta a 150 caracteres
+            offerObj.descripcion = truncateText(offerObj.descripcion);
+            offerObj.requisitos = truncateText(offerObj.requisitos);
+
+            // Evita que descripción y requisitos tengan contenido duplicado
             if (offerObj.descripcion === offerObj.requisitos) {
                 offerObj.requisitos = 'No se proporcionaron requisitos específicos.';
             }
-            
-            return offerObj;
+
+            return offerObj;  // Devuelve el objeto de la oferta procesada
         });
 
-        console.log('Found job offers:', processedJobOffers.length);
+        console.log('Found job offers:', processedJobOffers.length);  // Muestra el total de ofertas encontradas
+
+        // Renderiza la vista de ofertas de trabajo con las ofertas procesadas y la palabra clave usada
         res.render('jobOffers', { jobOffers: processedJobOffers, keyword });
     } catch (error) {
-        console.error('Error al buscar ofertas de trabajo:', error);
-        res.status(500).render('error', { message: 'Error al buscar ofertas de trabajo' });
+        console.error('Error al buscar ofertas de trabajo:', error);  // Muestra el error en consola si ocurre
+        res.status(500).render('error', { message: 'Error al buscar ofertas de trabajo' });  // Renderiza la página de error
     }
 };
+
 
 // READ
 const getOffers = async (req, res) => {
