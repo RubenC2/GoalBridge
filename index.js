@@ -24,8 +24,8 @@ app.set('view engine', 'pug'); // Configura el motor de vistas como Pug
 const manage404 = require("./middlewares/manage404");
 
 // MiddlewareS                      MORGAN
-const morgan = require("./middlewares/morgan");
-app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+// const morgan = require("./middlewares/morgan");
+// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
 // -- Middleware                    BODY-PARSER
 app.use(express.json());        

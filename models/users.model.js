@@ -25,7 +25,7 @@ const getUserByEmail = async (email) => {
 const getAllUsers = async () => {
     let client, result;
     try {
-        client = await pool.connect(); // Espera a abrir conexion
+        client = await pool.connect();
         const data = await client.query(queries.getAllUsers)
         result = data.rows
     } catch (err) {
