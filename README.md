@@ -3,6 +3,13 @@
 
 🌐 **[goalbridge.onrender.com](https://goalbridge.onrender.com)**
 
+## Documentación
+
+Puedes acceder a la documentación de esta API a traves de estos dos endpoints:
+
+- **/api-jsdoc/**
+- **/api-docs/**
+
 **GoalBridge** es una aplicación web diseñada para facilitar la búsqueda de empleo de manera efectiva y rápida. Con una interfaz intuitiva y herramientas avanzadas de filtrado, GoalBridge ayuda a los usuarios a encontrar las oportunidades laborales que mejor se ajustan a su perfil y preferencias. La plataforma emplea bases de datos robustas para almacenar y gestionar las ofertas de empleo y la información del usuario, asegurando una experiencia de uso fluida y segura.
 
 ## 📑 Tabla de Contenidos

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "generate-docs": "jsdoc -c ./jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,11 @@
     "pug": "^3.0.3",
     "puppeteer": "^23.7.1",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.4"
   }
 }

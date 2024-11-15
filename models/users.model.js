@@ -25,7 +25,7 @@ const getUserByEmail = async (email) => {
 const getAllUsers = async () => {
     let client, result;
     try {
-        client = await pool.connect(); // Espera a abrir conexion
+        client = await pool.connect();
         const data = await client.query(queries.getAllUsers)
         result = data.rows
     } catch (err) {
@@ -69,11 +69,11 @@ async function createUser({ nombre, apellidos, email, password }) {
 // }
 
 //UPDATE
-const updateUser = async (title) => {
+const updateUser = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.updateUser, [email])
+        const data = await client.query(queries.updateUser, [id])
         result = data.rows
         
     } catch (err) {
@@ -90,7 +90,7 @@ const deleteUser = async (title) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.deleteUser, [email])
+        const data = await client.query(queries.deleteUser, [])
         result = data.rows
         
     } catch (err) {
