@@ -41,10 +41,8 @@ const jobOfferSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-// Create a compound index for uniqueness
 jobOfferSchema.index({ puesto: 1, empresa: 1 }, { unique: true });
 
-// Create the model
 const JobOffer = mongoose.model("Offer", jobOfferSchema, "offers");
 
 

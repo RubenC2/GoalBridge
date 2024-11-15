@@ -43,7 +43,7 @@ const scrapOffers = async (req, res) => {
             const truncateText = (text, maxLength = 150) => 
                 text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
 
-            // Trunca la descripción y los requisitos de la oferta a 150 caracteres
+            // trunca la descripción y los requisitos de la oferta a 150 caracteres
             offerObj.descripcion = truncateText(offerObj.descripcion);
             offerObj.requisitos = truncateText(offerObj.requisitos);
 

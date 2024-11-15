@@ -44,10 +44,9 @@ const getAllUsers = async () => {
 async function createUser({ nombre, apellidos, email, password }) {
   try {
     
-    // Verificación de que ninguno de los parámetros sea null o undefined
     if (!nombre || !apellidos || !email || !password) {
       console.error("Error: uno o más parámetros están undefined o null.");
-      return null; // Salir de la función si falta algún parámetro
+      return null;
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const values = [nombre, apellidos, email, password];

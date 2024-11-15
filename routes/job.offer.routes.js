@@ -10,10 +10,8 @@ router.get("/create", async (req, res) => {
   res.render('dashboard', { jobOffers });
 });
 
-// Update a specific job offer
 router.post('/:id/edit', jobOfferController.editOffer);
 
-// Delete a specific job offer
 router.post('/:id/delete', jobOfferController.deleteOffer);
 
 module.exports = router;

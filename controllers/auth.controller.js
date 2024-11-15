@@ -15,7 +15,6 @@ async function login(req, res) {
     const { email, password } = req.body;
     try {
         const user = await getUserByEmail(email);
-        // if (user && await bcrypt.compare(password, user.password)) {
         console.log(user)
         if (user) {
             const token = jwt.sign(

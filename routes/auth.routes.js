@@ -1,9 +1,6 @@
 const express = require('express');
 // Rutas 
-// const webController = require("../controllers/web.controller");
 const router = express.Router();
-const authMiddleware = require('../middlewares/authMiddleware');
-const authorizeRole = require('../middlewares/roleMiddleware');
 const authController = require('../controllers/auth.controller');
 const validate = require('../middlewares/validator');
 const { loginValidationRules } = require('../validation/authValidators');
