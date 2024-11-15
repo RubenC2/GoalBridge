@@ -6,8 +6,11 @@ const apiController = require("../controllers/api.controller");
 
 // Rutas funcionando
 router.get('/', userController.getUsers);
-router.post('/', authMiddleware, userController.createUser);
-router.put('/put', userController.updateUser);
+router.get('/list', userController.getUsersToPrint);
+router.post('/', userController.createUser);
+router.post('/create', authMiddleware, userController.createUserAndRedirect);
+// router.put('/:email', userController.updateUser); // no funciona
+// router.delete('/', userController.deleteUser); // no funciona
 router.get('/profile', apiController.getFavoritesToPrint);
 
 module.exports = router;

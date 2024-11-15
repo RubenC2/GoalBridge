@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
     
 // GET http://localhost:3000/user?email=hola@gmail.com --> por email
-const getUsers = async (req, res) => {
+const getUsersToPrint = async (req, res) => {
     let users;
     
     try {
@@ -25,10 +25,31 @@ const getUsers = async (req, res) => {
     }
 };
 
+const getUsers = async (req, res) => {
+    let users;
+
+    try {
+
+        if (req.query.email) {
+            
+            users = await userModel.getUserByEmail(req.query.email);
+        } else {
+            
+            users = await userModel.getAllUsers();
+        }
+
+        
+        res.json({ usuarios: users });
+    } catch (err) {
+        
+        res.status(500).json({ error: 'Error al obtener los usuarios: ' + err });
+    }
+};
+
 
 // CREAR
-const createUser = async (req, res) => {
-    const newUser = req.body; // {nombre, apellidos, email, password}
+const createUserAndRedirect = async (req, res) => {
+    const newUser = req.body; 
 
     try {
         const response = await userModel.createUser(newUser);
@@ -40,6 +61,24 @@ const createUser = async (req, res) => {
         res.status(400).json({ success: false, message: "Usuario ya existe" });
     }
 };
+
+const createUser = async (req, res) => {
+    const newUser = req.body; 
+
+    try {
+        
+        const response = await userModel.createUser(newUser);
+
+        
+        res.status(201).json({ success: true, user: response });
+    } catch (error) {
+        console.error("Error al crear el usuario:", error);
+
+        
+        res.status(400).json({ success: false, message: "Usuario ya existe" });
+    }
+};
+
 
 //ACTUALIZAR
 const updateUser = async (req, res) => {
@@ -70,5 +109,7 @@ module.exports = {
     getUsers,
     createUser,
     deleteUser,
-    updateUser 
+    updateUser,
+    getUsersToPrint,
+    createUserAndRedirect
 }
