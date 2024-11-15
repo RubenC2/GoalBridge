@@ -1,14 +1,20 @@
-// Función para mostrar/ocultar el menú
+//const { createUser, getUserByEmail } = require('../models/users.model');
+
+
 function toggleMenu() {
     const menu = document.getElementById("menu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Funciones para redirigir a otras páginas
+
 function registrate() {
-    window.location.href = "/register"; // Redirige a la página de registro
+    window.location.href = "/register"; 
 }
 
 function iniciaSesion() {
-    window.location.href = "/auth/login"; // Redirige a la página de inicio de sesión
+    window.location.href = "/auth/login";
+}
+
+function cerrarSesion() {
+    window.location.href = "/auth/logout"; 
 }

@@ -65,6 +65,7 @@ const scrapOffers = async (req, res) => {
 };
 
 
+
 // READ
 const getOffers = async (req, res) => {
     try {

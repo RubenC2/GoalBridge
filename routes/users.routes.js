@@ -10,7 +10,7 @@ router.get('/list', userController.getUsersToPrint);
 router.post('/', userController.createUser);
 router.post('/create', authMiddleware, userController.createUserAndRedirect);
 // router.put('/:email', userController.updateUser); // no funciona
-// router.delete('/', userController.deleteUser); // no funciona
+//router.delete('/:id', userController.deleteUser); 
 router.get('/profile', apiController.getFavoritesToPrint);
 
 module.exports = router;

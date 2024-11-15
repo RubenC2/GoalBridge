@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 // -------------------------------------------------------------------------
 
@@ -24,12 +26,15 @@ app.set('view engine', 'pug'); // Configura el motor de vistas como Pug
 const manage404 = require("./middlewares/manage404");
 
 // MiddlewareS                      MORGAN
-// const morgan = require("./middlewares/morgan");
-// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+const morgan = require("./middlewares/morgan");
+app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
 // -- Middleware                    BODY-PARSER
-app.use(express.json());        
+app.use(express.json()); 
 
+// -- JSDOC
+app.use('/api-jsdoc', express.static(path.join(__dirname, '/jsondocs')));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // -------------------------------------------------------------------------
 // Importa rutas
 const webRoutes = require("./routes/web.routes") 

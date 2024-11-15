@@ -90,7 +90,7 @@ const deleteUser = async (title) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.deleteUser, [email])
+        const data = await client.query(queries.deleteUser, [])
         result = data.rows
         
     } catch (err) {
