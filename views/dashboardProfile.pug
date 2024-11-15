@@ -22,3 +22,8 @@ html(lang="es")
             | #{usuario.rol}
           button.btn-edit(onclick=`location.href='/user/edit/${usuario.id}'`) Editar
           button.btn-delete(onclick=`deleteUser(${usuario.id})`) Borrar
+        
+    include footer 
+    // Scripts
+    script(src="index.js")
+    script(src="/js/script.js")

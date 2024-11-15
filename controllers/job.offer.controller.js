@@ -13,6 +13,7 @@ const createOffer = async (req, res) => {
         res.status(400).json({ msj: `ERROR: ${error.stack}` });
     }
 };
+
 const scrapOffers = async (req, res) => {
     try {
         const keyword = req.query.keyword || '';  // Extrae la palabra clave de búsqueda desde los parámetros de la URL
@@ -39,7 +40,7 @@ const scrapOffers = async (req, res) => {
             const offerObj = offer.toObject();  // Convierte el objeto de mongoose a un objeto JavaScript simple
 
             // Función para truncar texto largo con "..." si excede el límite de caracteres
-            const truncateText = (text, maxLength = 150) => 
+            const truncateText = (text, maxLength = 200) => 
                 text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
 
             // Trunca la descripción y los requisitos de la oferta a 150 caracteres
@@ -67,29 +68,29 @@ const scrapOffers = async (req, res) => {
 
 
 // READ
-const getOffers = async (req, res) => {
-    try {
-        const keyword = req.query.keyword || '';
+// const getOffers = async (req, res) => {
+//     try {
+//         const keyword = req.query.keyword || '';
 
-        // Ensure only to proceed if a keyword is provided
-        const jobOffers = keyword
-            ? await jobOfferModel.find({
-                $or: [
-                    { puesto:  { $regex: `.*${keyword}.*`, $options: 'i' } },
-                    { empresa: { $regex: `.*${keyword}.*`, $options: 'i' }},
-                    { descripcion: { $regex: `.*${keyword}.*`, $options: 'i' }},
-                    { modalidad:  { $regex: `.*${keyword}.*`, $options: 'i' } },
-                    { requisitos: { $regex: `.*${keyword}.*`, $options: 'i' }},
-                    { salario: { $regex: `.*${keyword}.*`, $options: 'i' }}
-                ],
-            })
-            : []; // Return empty array if no keyword is provided
+//         // Ensure only to proceed if a keyword is provided
+//         const jobOffers = keyword
+//             ? await jobOfferModel.find({
+//                 $or: [
+//                     { puesto:  { $regex: `.*${keyword}.*`, $options: 'i' } },
+//                     { empresa: { $regex: `.*${keyword}.*`, $options: 'i' }},
+//                     { descripcion: { $regex: `.*${keyword}.*`, $options: 'i' }},
+//                     { modalidad:  { $regex: `.*${keyword}.*`, $options: 'i' } },
+//                     { requisitos: { $regex: `.*${keyword}.*`, $options: 'i' }},
+//                     { salario: { $regex: `.*${keyword}.*`, $options: 'i' }}
+//                 ],
+//             })
+//             : []; // Return empty array if no keyword is provided
 
-            res.render('jobOffers', { jobOffers });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al buscar ofertas de trabajo' });
-    }
-};
+//             res.render('jobOffers', { jobOffers });
+//     } catch (error) {
+//         res.status(500).json({ error: 'Error al buscar ofertas de trabajo' });
+//     }
+// };
 
 // UPDATE
 const editOffer = async (req, res) => {
@@ -121,7 +122,7 @@ const deleteOffer = async (req, res) => {
 
 module.exports = {
     createOffer,
-    getOffers,
+    // getOffers,
     editOffer,
     deleteOffer,
     scrapOffers
