@@ -44,8 +44,21 @@ header {
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
+} 
+
+::-webkit-scrollbar {
+  width: 20px;
 }
 
+::-webkit-scrollbar-track {
+  background: var(--footer-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 10px;
+  border: 2px solid #333;
+}
 
 .logo {
   width: 120px;
@@ -128,12 +141,14 @@ main {
 
 h1, h2, h3 {
   margin-bottom: 1rem;
+  margin-left: 2rem;
+  padding: 10px;
 }
 
-/* Form Styles */
+/* Form Styles */ 
 form {
   background-color: #fff;
-  padding: 2rem;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -167,7 +182,7 @@ button[type="submit"] {
   background-color: var(--primary-color);
   color: #fff;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 6px 6px 6px 6px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -188,11 +203,11 @@ button[type="submit"]:hover {
 .search-offers,
 .job-offers {
   background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  /* max-width: 600px; */
+  margin: 4px;
 }
 
 .create-offer-title,
@@ -207,14 +222,14 @@ button[type="submit"]:hover {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 20px 50px;
   margin-bottom: 1rem;
 }
 
 .offer-title {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
 
 .offer-details {
@@ -223,8 +238,8 @@ button[type="submit"]:hover {
 }
 
 .offer-detail {
-  display: flex;
-  justify-content: space-between;
+  display: flow;
+  justify-content: start;
   font-size: 0.9rem;
 }
 
@@ -234,13 +249,13 @@ button[type="submit"]:hover {
 
 .offer-actions {
   margin-top: 1rem;
-  display: flex;
+  display: flow;
   justify-content: flex-end;
   gap: 0.5rem;
 }
 
 .btn {
-  padding: 0.5rem 1rem;
+  padding: 6px 6px 6px 6px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -254,12 +269,19 @@ button[type="submit"]:hover {
 }
 
 .btn-edit,
-.btn-delete,
 .btn-secondary {
   background-color: var(--secondary-color);
   color: #fff;
 }
 
+.btn-delete {
+  padding: 6px 6px 6px 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
 
 .btn:hover {
   opacity: 0.9;

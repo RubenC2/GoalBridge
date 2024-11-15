@@ -6,7 +6,7 @@ html(lang="es")
     link(rel="stylesheet", href="/css/style.css")
 
   body
-    //- header.pug
+    
     include header    
 
     block content
@@ -59,17 +59,17 @@ html(lang="es")
                     span.label Empresa: 
                     span.value= offer.empresa
                   .offer-detail
-                    span.label Salario: 
+                    span.label Salario:   
                     span.value= offer.salario
                   .offer-detail
                     span.label Descripción: 
-                    span.value= offer.descripcion.length > 150 ? offer.descripcion.substring(0, 147) + '...' : offer.descripcion
+                    span.value= offer.descripcion.length > 550 ? offer.descripcion.substring(0, 600) + '...' : offer.descripcion
                   .offer-detail
                     span.label Modalidad: 
                     span.value= offer.modalidad
-                  .offer-detail
-                    span.label Requisitos: 
-                    span.value= offer.requisitos.length > 150 ? offer.requisitos.substring(0, 147) + '...' : offer.requisitos
+                  //- .offer-detail
+                  //-   span.label Requisitos: 
+                  //-   span.value= offer.requisitos.length > 150 ? offer.requisitos.substring(0, 147) + '...' : offer.requisitos
                 
                 if offer.link
                   .offer-link
