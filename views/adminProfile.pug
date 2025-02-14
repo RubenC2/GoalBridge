@@ -1,0 +1,26 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    title Admin Profile - GoalBridge
+    link(rel="stylesheet", href="/css/style.css")
+
+  include header
+  include layout
+
+  block content
+    .container
+      h1 Administrador - Panel de control
+
+      .admin-info
+        //p Nombre: #{admin.nombre}
+        //p Correo electrónico: #{admin.email}
+      
+      .buttons
+        a(href="/dashboard", class="btn btn-primary") Dashboard
+        a(href="/users", class="btn btn-secondary") Users
+
+  include footer
+
+  script(src="index.js")
+  script(src="/js/script.js")

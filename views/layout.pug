@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title Sistema de Roles
+    link(rel="stylesheet" href="/css/style.css")
+    include menu 
+  body
+    nav
+      ul
+        if role === 'admin'
+          li: a(href='/admin/dashboard') Panel de Administración
+        else if role === 'user'
+          li: a(href='/user/dashboard') Panel de Usuario
+        //- li: a(href='/logout' class='logout') Cerrar sesión
+
+    block content

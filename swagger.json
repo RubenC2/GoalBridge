@@ -1,0 +1,269 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Usuarios y Ofertas de Trabajo",
+    "version": "1.0",
+    "description": "API para gestionar usuarios, ofertas de trabajo y favoritos."
+  },
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Obtiene todos los usuarios",
+        "description": "Devuelve una lista de todos los usuarios en la base de datos.",
+        "responses": {
+          "200": {
+            "description": "Lista de usuarios",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "nombre": {
+                        "type": "string",
+                        "example": "Juan Pérez"
+                      },
+                      "apellidos": {
+                        "type": "string",
+                        "example": "Garcia Garcia"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "juanperez@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "aabbcc123"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites/:id": {
+      "get": {
+        "summary": "Obtiene los favoritos de un id parado por parametro en la url",
+        "description": "Pasandole un id por parametro a la ruta, puedes ver las ofertas de trabajo en favoritos del usuario.",
+        "responses": {
+          "200": {
+            "description": "Lista de favoritos del usuario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista favoritos"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "67349b64c40818831c0ddfdd"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites": {
+      "post": {
+        "summary": "Añade a favoritos una oferta a un usuario",
+        "description": "Agrega una nueva oferta de trabajo a la base de datos del usuario pasado el id por parametro",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ofertaId": {
+                    "type": "string",
+                    "example": "67349b97c40818831c0de007"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Favorito agregado correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Favorito agregado correctamente"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "usuarioId": {
+                          "type": "string",
+                          "example": "11"
+                        },
+                        "ofertaId": {
+                          "type": "string",
+                          "example": "67349b97c40818831c0de007"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites/{id}": {
+      "delete": {
+        "summary": "Eliminar un favorito pasando un ID por parametro y una oferta en el BODY",
+        "description": "Elimina una oferta de los favoritos del usuario especificado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario cuyos favoritos se están modificando.",
+            "schema": {
+              "type": "string",
+              "example": "11"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ofertaId": {
+                    "type": "string",
+                    "description": "ID de la oferta a eliminar de los favoritos",
+                    "example": "67349b97c40818831c0de007"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Favorito eliminado correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Favorito eliminado correctamente"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Favorito no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Favorito no encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "Inicia sesión del usuario",
+        "description": "Procesa la autenticación del usuario.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "juanperez@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "aabbcc123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Inicio de sesión exitoso"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          }
+        }
+      }
+    }
+  }
+}
